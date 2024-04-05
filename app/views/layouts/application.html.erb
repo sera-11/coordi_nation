@@ -11,12 +11,16 @@
     <link rel="stylesheet" href="styles.css">
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    
+
     <script src="scripts.js"></script>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+
+    <%= render partial: "shared/nav" %>
+
+    
     <%= yield %>
   </body>
 </html>
