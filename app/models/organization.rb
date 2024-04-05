@@ -9,4 +9,9 @@
 #  user_id    :integer
 #
 class Organization < ApplicationRecord
+  has_many :members, dependent: :destroy
+  has_many :meeting_minutes, dependent: :destroy
+  has_many :events, dependent: :destroy
+  has_many :tasks, dependent: :destroy
+  belongs_to :user
 end

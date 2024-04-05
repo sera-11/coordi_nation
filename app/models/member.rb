@@ -14,4 +14,6 @@
 #  organization_id :integer
 #
 class Member < ApplicationRecord
+  has_many :tasks, foreign_key: "assigned_to_id", dependent: :destroy
+  belongs_to :organization
 end
