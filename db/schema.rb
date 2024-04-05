@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_05_222349) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_05_222820) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -51,6 +51,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_05_222349) do
 
   create_table "meeting_minutes", force: :cascade do |t|
     t.date "meeting_date"
+    t.integer "organization_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "role", default: "Member"
+    t.string "phone_number"
+    t.string "email"
+    t.date "birthday"
     t.integer "organization_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
