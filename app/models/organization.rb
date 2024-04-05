@@ -14,4 +14,6 @@ class Organization < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :tasks, dependent: :destroy
   belongs_to :user
+
+  validates :name, presence: true
 end
