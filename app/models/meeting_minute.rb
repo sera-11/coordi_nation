@@ -13,4 +13,7 @@ class MeetingMinute < ApplicationRecord
 
   belongs_to :organization
 
+  validates :meeting_date, presence: true
+  validates :content, presence: true
+
 end
