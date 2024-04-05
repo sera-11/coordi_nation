@@ -6,6 +6,7 @@
 #  address         :string
 #  description     :text
 #  end_time        :datetime
+#  event_date      :date
 #  hosting         :boolean
 #  start_time      :datetime
 #  title           :string
