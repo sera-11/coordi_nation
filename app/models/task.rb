@@ -14,4 +14,9 @@
 class Task < ApplicationRecord
   belongs_to :member, foreign_key: "assigned_to_id"
   belongs_to :organization
+
+  validates :text, presence: true
+  validates :status, presence: true
+  validates :assigned_to_id, presence: true
+  validates :due_date, presence: true
 end
