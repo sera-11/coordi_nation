@@ -53,15 +53,16 @@ unless Rails.env.production?
       end
     end # end of add_organizations
 
-    # create tasks
     task add_tasks: :environment do
       puts "adding tasks..."
-
-      20.times do
+    
+      100.times do
         t = Task.create(
-          text: "Task sample text",
+          text: Faker::Lorem.sentence,
           assigned_to_id: User.all.sample.id,
           organization_id: Organization.all.sample.id,
+          due_date: Faker::Date.forward(days: 30),
+          status: Task.statuses.keys.sample # Assign a random status from the enum keys
         )
       end
     end # end of add_tasks
@@ -111,10 +112,10 @@ unless Rails.env.production?
           birthday: Faker::Date.between(from: "1995-01-01", to: "2010-12-31"),
           phone_number: Faker::PhoneNumber.phone_number,
           role: "Member",
-          organization_id: Organization.all.sample.id,
+          organization_id: Organization.all.sample.id
         )
         m.email = "#{m.first_name.downcase}#{m.last_name.downcase}@example.com"
-        # m.save
+        m.save
       end
       puts "done"
     end # end of add_members
