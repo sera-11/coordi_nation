@@ -7,8 +7,10 @@
   <div id="organizations">
     <% @organizations.each do |organization| %>
       <%= link_to organization.name, organization %>
+      <br>
     <% end %>
   </div>
+
 
   <%= link_to "New organization", new_organization_path %>
 

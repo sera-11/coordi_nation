@@ -1,10 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<div class="p-5">
 
-<%= render @organization %>
+  <p style="color: green"><%= notice %></p>
 
-<div>
-  <%= link_to "Edit this organization", edit_organization_path(@organization) %> |
-  <%= link_to "Back to organizations", organizations_path %>
+  <%= render @organization %>
 
-  <%= button_to "Destroy this organization", @organization, method: :delete %>
+  <div>
+    <%= link_to "Edit this organization", edit_organization_path(@organization) %> |
+    <%= link_to "Back to organizations", organizations_path %>
+
+    <%= button_to "Destroy this organization", @organization, method: :delete %>
+  </div>
+
 </div>
