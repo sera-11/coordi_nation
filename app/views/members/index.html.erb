@@ -1,14 +1,20 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Members</h1>
+<div class="p-5">
 
-<div id="members">
-  <% @members.each do |member| %>
-    <%= render member %>
-    <p>
-      <%= link_to "Show this member", member %>
-    </p>
-  <% end %>
+  <%= render partial: "shared/org_nav" %>
+
+  <h3 class="text-center mt-4">Members</h3>
+
+  <div id="members">
+    <% @members.each do |member| %>
+      <%= render member %>
+      <p>
+        <%= link_to "Show this member", member %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= link_to "New member", new_member_path %>
+
 </div>
-
-<%= link_to "New member", new_member_path %>
