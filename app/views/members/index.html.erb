@@ -7,12 +7,28 @@
   <h3 class="text-center mt-4">Members</h3>
 
   <div id="members">
-    <% @members.each do |member| %>
-      <%= render member %>
-      <p>
-        <%= link_to "Show this member", member %>
-      </p>
-    <% end %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Email</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @members.each_with_index do |member, count | %>
+          <tr>
+            <th scope="row"> <%= count + 1 %> </th>
+            <td> <%= member.first_name %> </td>
+            <td> <%= member.last_name %> </td>
+            <td> <%= member.email %> </td>
+            <td> <%= link_to "Show this member", member %> </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
   </div>
 
   <%= link_to "New member", new_member_path %>
