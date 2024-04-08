@@ -111,7 +111,7 @@ unless Rails.env.production?
           birthday: Faker::Date.between(from: "1995-01-01", to: "2010-12-31"),
           phone_number: Faker::PhoneNumber.phone_number,
           role: "Member",
-          organization_id: Organization.all.sample.id,
+          organization_id: Organization.all.sample.id
         )
         m.email = "#{m.first_name.downcase}#{m.last_name.downcase}@example.com"
         # m.save
