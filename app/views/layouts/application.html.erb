@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Rails Template</title>
+    <title>Coordination</title>
+    <link rel="icon" type="image/x-icon" href="/images/icon.png">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= render partial: "shared/cdn_assets" %>
+    <link rel="stylesheet" href="styles.css">
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <script src="scripts.js"></script>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+
+    <%= render partial: "shared/nav" %>
+
+    
     <%= yield %>
   </body>
 </html>

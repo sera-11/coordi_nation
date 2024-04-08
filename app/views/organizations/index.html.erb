@@ -1,0 +1,17 @@
+<div class="p-5">
+
+  <p style="color: green"><%= notice %></p>
+
+  <h1>Organizations</h1>
+
+  <div id="organizations">
+    <% @organizations.each do |organization| %>
+      <%= link_to organization.name, organization %>
+      <br>
+    <% end %>
+  </div>
+
+
+  <%= link_to "New organization", new_organization_path %>
+
+</div>
