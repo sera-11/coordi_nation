@@ -6,29 +6,25 @@
 
   <h3 class="text-center mt-4">Events</h3>
 
-<div id="events">
-    <% @events.each do |event| %>
-      <p>
-        <%= link_to event.title, event %>
-      </p>
-    <% end %>
-  </div>
-
   <%= link_to "New event", new_event_path %>
 
   <hr>
-  <%= month_calendar events: @events do |date, events| %>
-    <div class="day">
-      <%= date.day %>
-    </div>
-    <% events.each do |event| %>
-    <div class="card-header">
-      <div class="card-title mt-5 ">
-        <%= link_to event.title , event %> <!-- Example: Display event title -->
-      </div>
-    </div>
 
+  <div id="events">
+    <%= month_calendar events: @events do |date, events| %>
+      <div class="day">
+        <%= date.day %>
+      </div>
+      <% events.each do |event| %>
+        <div class="card-header">
+          <div class="card-title mt-5 ">
+            <%= link_to event.title , event %> <!-- Example: Display event title -->
+          </div>
+        </div>
+
+      <% end %>
     <% end %>
-    <% end %>
+
+  </div>
 
 </div>
