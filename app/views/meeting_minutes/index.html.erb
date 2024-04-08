@@ -1,18 +1,21 @@
+<!-- app/views/meeting_minutes/index.html.erb -->
+
+<p style="color: green"><%= notice %></p>
 <div class="p-5">
 
-  <p style="color: green"><%= notice %></p>
+  <%= render partial: "shared/org_nav" %>
 
-  <h1>Meeting minutes</h1>
+  <h3 class="text-center mt-4">Meeting Minutes</h3>
 
   <div id="meeting_minutes">
     <% @meeting_minutes.each do |meeting_minute| %>
-      <%= render meeting_minute %>
       <p>
-        <%= link_to "Show this meeting minute", meeting_minute %>
+        <%= link_to meeting_minute.meeting_date.try(:strftime, '%Y %B %d'), meeting_minute %>
       </p>
     <% end %>
   </div>
 
-  <%= link_to "New meeting minute", new_meeting_minute_path %>
+  <%= link_to "New Meeting Minute", new_meeting_minute_path(organization_id: @organization.id) %>
+
 
 </div>
