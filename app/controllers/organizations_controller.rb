@@ -57,6 +57,30 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def meeting_minutes
+    @organization = Organization.find(params[:id])
+    @meeting_minutes = @organization.meeting_minutes # Assuming you have a relationship defined between Organization and MeetingMinutes models
+    render 'meeting_minutes/index'
+  end
+
+  def members
+    @organization = Organization.find(params[:id])
+    @members = @organization.members 
+    render 'members/index'
+  end
+
+  def tasks
+    @organization = Organization.find(params[:id])
+    @tasks = @organization.tasks 
+    render 'tasks/index'
+  end
+
+  def events
+    @organization = Organization.find(params[:id])
+    @events = @organization.events 
+    render 'events/index'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_organization

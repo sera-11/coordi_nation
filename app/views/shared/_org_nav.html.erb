@@ -1,0 +1,23 @@
+<h1 class="text-center"><%= @organization.name %></h1>
+
+  <nav class="bg-body-tertiary">
+    <div class="container-fluid">
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="/organizations/<%=@organization.id%>"> <%= @organization.name %> </a>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Meeting Minutes', meeting_minutes_organization_path(@organization), class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Members', members_organization_path(@organization), class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Tasks', tasks_organization_path(@organization), class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Events', events_organization_path(@organization), class: 'nav-link' %>
+        </li>
+      </ul>
+    </div>
+  </nav>
