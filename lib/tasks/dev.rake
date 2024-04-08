@@ -13,14 +13,14 @@ unless Rails.env.production?
 
     desc "Add sample data"
     task sample_data: [
-      :environment,
-      "dev:add_users",
-      "dev:add_organizations",
-      "dev:add_tasks",
-      "dev:add_events",
-      "dev:add_meeting_minutes",
-      "dev:add_members"
-      ] do
+           :environment,
+           "dev:add_users",
+           "dev:add_organizations",
+           "dev:add_events",
+           "dev:add_meeting_minutes",
+           "dev:add_members",
+           "dev:add_tasks"
+         ] do
       puts "done adding sample data"
     end
 
@@ -52,20 +52,6 @@ unless Rails.env.production?
         )
       end
     end # end of add_organizations
-
-    task add_tasks: :environment do
-      puts "adding tasks..."
-    
-      100.times do
-        t = Task.create(
-          text: Faker::Lorem.sentence,
-          assigned_to_id: User.all.sample.id,
-          organization_id: Organization.all.sample.id,
-          due_date: Faker::Date.forward(days: 30),
-          status: Task.statuses.keys.sample # Assign a random status from the enum keys
-        )
-      end
-    end # end of add_tasks
 
     # create events
     task add_events: :environment do
@@ -112,12 +98,26 @@ unless Rails.env.production?
           birthday: Faker::Date.between(from: "1995-01-01", to: "2010-12-31"),
           phone_number: Faker::PhoneNumber.phone_number,
           role: "Member",
-          organization_id: Organization.all.sample.id
+          organization_id: Organization.all.sample.id,
         )
         m.email = "#{m.first_name.downcase}#{m.last_name.downcase}@example.com"
         m.save
       end
-      puts "done"
     end # end of add_members
+
+    task add_tasks: :environment do
+      puts "adding tasks..."
+
+      100.times do
+        t = Task.create(
+          text: Faker::Lorem.sentence,
+          assigned_to_id: Member.all.sample.id,
+          organization_id: Organization.all.sample.id,
+          due_date: Faker::Date.forward(days: 30),
+          status: Task.statuses.keys.sample, # Assign a random status from the enum keys
+        )
+      end
+    end # end of add_tasks
+    puts "done"
   end
 end
