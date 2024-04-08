@@ -1,14 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<div class="p-5">
 
-<h1>Meeting minutes</h1>
+  <p style="color: green"><%= notice %></p>
 
-<div id="meeting_minutes">
-  <% @meeting_minutes.each do |meeting_minute| %>
-    <%= render meeting_minute %>
-    <p>
-      <%= link_to "Show this meeting minute", meeting_minute %>
-    </p>
-  <% end %>
+  <h1>Meeting minutes</h1>
+
+  <div id="meeting_minutes">
+    <% @meeting_minutes.each do |meeting_minute| %>
+      <%= render meeting_minute %>
+      <p>
+        <%= link_to "Show this meeting minute", meeting_minute %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= link_to "New meeting minute", new_meeting_minute_path %>
+
 </div>
-
-<%= link_to "New meeting minute", new_meeting_minute_path %>
