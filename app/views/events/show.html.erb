@@ -5,7 +5,7 @@
 
   <div>
     <%= link_to "Edit this event", edit_event_path(@event) %> |
-    <%= link_to "Back to events", events_organization_path(@event) %>
+    <a href="/organizations/<%= @event.organization_id %>/events">Back to organization's events</a>
 
     <%= button_to "Destroy this event", @event, method: :delete %>
   </div>
