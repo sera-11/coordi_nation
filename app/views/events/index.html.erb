@@ -1,7 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
 <div class="p-5">
-
   <%= render partial: "shared/org_nav" %>
 
   <h3 class="text-center mt-4">Events</h3>
@@ -10,21 +9,20 @@
 
   <hr>
 
-  <div id="events">
+  <div id="events" class="mt-4"> <!-- Add margin top -->
     <%= month_calendar events: @events do |date, events| %>
       <div class="day">
         <%= date.day %>
       </div>
-      <% events.each do |event| %>
-        <div class="card-header">
-          <div class="card-title mt-5 ">
-            <%= link_to event.title , event %> <!-- Example: Display event title -->
+      <div class="event-list"> <!-- Create a container for event list -->
+        <% events.each do |event| %>
+          <div class="card-header mr-n3">
+            <div class="card-title mt-2">
+              <%= link_to event.title, event %>
+            </div>
           </div>
-        </div>
-
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
-
   </div>
-
 </div>
