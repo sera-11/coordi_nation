@@ -27,7 +27,13 @@
   </div>
 
   <div>
-    <%= form.hidden_field :status %>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select :status, options_for_select(Task.statuses.map { |key, value| 
+    [key, value]
+  }, task.status) %>
+    <%#= form.collection_select :status, Task.status. %>
+      <%#= form.select :status, options_for_select(Task.status.map {|key, value| [key.titleize, Task.status.key(value)]}, task.status) %>
+
   </div>
 
   <div>
