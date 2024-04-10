@@ -14,7 +14,6 @@ class MembersController < ApplicationController
   def new
     @member = Member.new
     @member.organization_id = params[:organization_id]
-
   end
 
   # GET /members/1/edit

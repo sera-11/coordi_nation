@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get "events", on: :member
     resources :events
     resources :members
+    resources :tasks
   end
 
   devise_for :users

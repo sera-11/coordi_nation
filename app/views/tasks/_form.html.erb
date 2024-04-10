@@ -27,16 +27,14 @@
   </div>
 
   <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
+    <%= form.hidden_field :status %>
   </div>
 
   <div>
-    <%= form.label :organization_id, style: "display: block" %>
-    <%= form.number_field :organization_id %>
+    <%= form.hidden_field :organization_id %>
   </div>
 
-  <div>
+  <div class="mt-2">
     <%= form.submit %>
   </div>
 <% end %>
