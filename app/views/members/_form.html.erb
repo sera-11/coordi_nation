@@ -42,11 +42,10 @@
   </div>
 
   <div>
-    <%= form.label :organization_id, style: "display: block" %>
-    <%= form.number_field :organization_id %>
+    <%= form.hidden_field :organization_id %>
   </div>
 
-  <div>
+  <div class="pt-2">
     <%= form.submit %>
   </div>
 <% end %>
