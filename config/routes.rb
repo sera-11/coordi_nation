@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get "members", on: :member
     get "tasks", on: :member
     get "events", on: :member
+    resources :events
   end
 
   devise_for :users

@@ -1,9 +1,10 @@
+<!-- app/views/events/new -->
 <h1>New event</h1>
 
 <%= render "form", event: @event %>
 
 <br>
 
-<div>
-  <%= link_to "Back to events", events_path %>
+<div class="p-2">
+  <a href="/organizations/<%= @event.organization_id %>/events">Back to organization's events</a>
 </div>

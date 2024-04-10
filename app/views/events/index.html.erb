@@ -1,20 +1,28 @@
 <p style="color: green"><%= notice %></p>
 
 <div class="p-5">
-
   <%= render partial: "shared/org_nav" %>
 
   <h3 class="text-center mt-4">Events</h3>
 
-  <div id="events">
-    <% @events.each do |event| %>
-      <%= render event %>
-      <p>
-        <%= link_to "Show this event", event %>
-      </p>
+  <%= link_to "New event", new_organization_event_path(@organization), class: "btn btn-primary" %>
+
+  <hr>
+
+  <div id="events" class="mt-4"> <!-- Add margin top -->
+    <%= month_calendar events: @events do |date, events| %>
+      <div class="day">
+        <%= date.day %>
+      </div>
+      <div class="event-list"> <!-- Create a container for event list -->
+        <% events.each do |event| %>
+          <div class="card-header mr-n3">
+            <div class="card-title mt-2">
+              <%= link_to event.title, event %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
-
-  <%= link_to "New event", new_event_path %>
-
 </div>
