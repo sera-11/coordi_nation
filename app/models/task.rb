@@ -4,7 +4,7 @@
 #
 #  id              :integer          not null, primary key
 #  due_date        :date
-#  status          :string           default(NULL)
+#  status          :string           default("not_started")
 #  text            :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -15,7 +15,7 @@ class Task < ApplicationRecord
   belongs_to :member, foreign_key: "assigned_to_id"
   belongs_to :organization
 
-  enum status: { "Not started" => :not_started, "In progress" => :in_progress, "Completed" => :completed }
+  enum status: { :not_started => "Not started", :in_progress => "In progress", :completed => "Completed" }
 
   after_initialize :set_default_status, if: :new_record?
 

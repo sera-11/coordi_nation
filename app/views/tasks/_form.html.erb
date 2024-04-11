@@ -27,10 +27,9 @@
   </div>
 
   <div>
-  <%= form.label :status, style: "display: block" %>
-  <%= form.select :status, Task.statuses.keys.map { |status| [status.humanize, status] }, prompt: "Select Status" %>
-</div>
-
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select :status, Task.statuses.map { |key, value| [value, key] }, prompt: "Select Status" %>
+  </div>
 
   <div>
     <%= form.hidden_field :organization_id %>
