@@ -13,6 +13,7 @@ class MeetingMinutesController < ApplicationController
   # GET /meeting_minutes/new
   def new
     @meeting_minute = MeetingMinute.new
+    @meeting_minute.organization_id = params[:organization_id]
   end
 
   # GET /meeting_minutes/1/edit

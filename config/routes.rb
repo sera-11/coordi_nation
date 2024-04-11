@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get "members", on: :member
     get "tasks", on: :member
     get "events", on: :member
+    resources :meeting_minutes
     resources :events
     resources :members
     resources :tasks
