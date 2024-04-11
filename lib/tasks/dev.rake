@@ -81,10 +81,8 @@ unless Rails.env.production?
         mm = MeetingMinute.create!(
           meeting_date: Faker::Date.forward(days: 100),
           organization_id: Organization.all.sample.id,
+          content: Faker::Lorem.paragraphs(number: 3).join("\n\n") # Sample content using Faker
         )
-        # Generate some fake content for the meeting minute
-        mm.content = Faker::Lorem.paragraphs(number: 3).join("\n\n")
-        mm.save
       end
     end # end of add_meeting_minutes
 
@@ -92,16 +90,19 @@ unless Rails.env.production?
     task add_members: :environment do
       puts "adding members..."
       50.times do
+        first_name = Faker::Name.first_name
+        last_name = Faker::Name.last_name
+        email = Faker::Internet.email(name: "#{first_name}_#{last_name}")
+    
         m = Member.create!(
-          first_name: Faker::Name.first_name,
-          last_name: Faker::Name.last_name,
+          first_name: first_name,
+          last_name: last_name,
+          email: email, # Provide a randomly generated email address
           birthday: Faker::Date.between(from: "1995-01-01", to: "2010-12-31"),
           phone_number: Faker::PhoneNumber.phone_number,
           role: "Member",
-          organization_id: Organization.all.sample.id,
+          organization_id: Organization.all.sample.id
         )
-        m.email = "#{m.first_name.downcase}#{m.last_name.downcase}@example.com"
-        m.save
       end
     end # end of add_members
 
