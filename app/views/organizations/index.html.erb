@@ -5,13 +5,13 @@
   <h1>Organizations</h1>
 
   <div id="organizations">
-    <% @organizations.each do |organization| %>
+    <% @user_organizations.each do |organization| %>
       <%= link_to organization.name, organization %>
       <br>
     <% end %>
   </div>
 
 
-  <%= link_to "New organization", new_organization_path %>
+  <%= link_to "New organization", new_organization_path, class: "btn-primary btn mt-3" %>
 
 </div>

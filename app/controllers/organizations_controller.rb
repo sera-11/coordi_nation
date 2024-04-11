@@ -3,7 +3,9 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations or /organizations.json
   def index
-    @organizations = Organization.all
+    def index
+      @user_organizations = Organization.where(user_id: current_user.id)
+    end
   end
 
   # GET /organizations/1 or /organizations/1.json
