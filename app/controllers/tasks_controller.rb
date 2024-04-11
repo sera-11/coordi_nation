@@ -14,7 +14,7 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @task.organization_id = params[:organization_id]
-    @task.status = "not_started"
+    
   end
 
   # GET /tasks/1/edit
@@ -24,6 +24,7 @@ class TasksController < ApplicationController
   # POST /tasks or /tasks.json
   def create
     @task = Task.new(task_params)
+    @task.status = :not_started
 
     respond_to do |format|
       if @task.save
@@ -60,6 +61,7 @@ class TasksController < ApplicationController
   end
 
   private
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
@@ -67,6 +69,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:text, :due_date, :assigned_to_id, :status, :organization_id)
+      params.require(:task).permit(:text, :due_date, :assigned_to_id, :organization_id)
     end
 end
