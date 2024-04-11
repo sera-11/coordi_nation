@@ -13,6 +13,7 @@ class MembersController < ApplicationController
   # GET /members/new
   def new
     @member = Member.new
+    @member.organization_id = params[:organization_id]
   end
 
   # GET /members/1/edit

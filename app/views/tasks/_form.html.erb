@@ -28,15 +28,19 @@
 
   <div>
     <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
+    <%= form.select :status, options_for_select(Task.statuses.map { |key, value| 
+    [key, value]
+  }, task.status) %>
+    <%#= form.collection_select :status, Task.status. %>
+      <%#= form.select :status, options_for_select(Task.status.map {|key, value| [key.titleize, Task.status.key(value)]}, task.status) %>
+
   </div>
 
   <div>
-    <%= form.label :organization_id, style: "display: block" %>
-    <%= form.number_field :organization_id %>
+    <%= form.hidden_field :organization_id %>
   </div>
 
-  <div>
+  <div class="mt-2">
     <%= form.submit %>
   </div>
 <% end %>

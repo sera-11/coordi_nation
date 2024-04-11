@@ -13,6 +13,8 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @task.organization_id = params[:organization_id]
+    @task.status = "not_started"
   end
 
   # GET /tasks/1/edit
