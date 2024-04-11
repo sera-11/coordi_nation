@@ -30,7 +30,7 @@ unless Rails.env.production?
       names = ["alice", "bob", "lisa"]
 
       names.each do |name|
-        u = User.create(
+        u = User.create!(
           first_name: name.capitalize(),
           last_name: Faker::Name.last_name,
           email: "#{name}@example.com",
@@ -46,7 +46,7 @@ unless Rails.env.production?
       puts "adding organizations..."
 
       10.times do
-        o = Organization.create(
+        o = Organization.create!(
           name: Faker::Company.name,
           user_id: User.all.sample.id,
         )
@@ -60,7 +60,7 @@ unless Rails.env.production?
       20.times do
         event_start_time = Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :day)
         event_end_time = event_start_time + rand(1..8).hours # Adding random hours for the event duration
-        e = Event.create(
+        e = Event.create!(
           title: "Sample event",
           description: "Sample description",
           event_date: Faker::Date.between(from: "2024-04-08", to: "2024-09-25"),
@@ -78,7 +78,7 @@ unless Rails.env.production?
       puts "adding meeting minutes..."
 
       20.times do
-        mm = MeetingMinute.create(
+        mm = MeetingMinute.create!(
           meeting_date: Faker::Date.forward(days: 100),
           organization_id: Organization.all.sample.id,
         )
@@ -92,7 +92,7 @@ unless Rails.env.production?
     task add_members: :environment do
       puts "adding members..."
       50.times do
-        m = Member.create(
+        m = Member.create!(
           first_name: Faker::Name.first_name,
           last_name: Faker::Name.last_name,
           birthday: Faker::Date.between(from: "1995-01-01", to: "2010-12-31"),
@@ -109,7 +109,7 @@ unless Rails.env.production?
       puts "adding tasks..."
 
       100.times do
-        t = Task.create(
+        t = Task.create!(
           text: Faker::Lorem.sentence,
           assigned_to_id: Member.all.sample.id,
           organization_id: Organization.all.sample.id,

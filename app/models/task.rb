@@ -4,7 +4,7 @@
 #
 #  id              :integer          not null, primary key
 #  due_date        :date
-#  status          :string           default(NULL)
+#  status          :string
 #  text            :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
