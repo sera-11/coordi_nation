@@ -1,32 +1,34 @@
-<%= form_with(model: meeting_minute) do |form| %>
-  <% if meeting_minute.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(meeting_minute.errors.count, "error") %> prohibited this meeting_minute from being saved:</h2>
+<div class="p-5">
 
-      <ul>
-        <% meeting_minute.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <%= form_with(model: meeting_minute) do |form| %>
+    <% if meeting_minute.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(meeting_minute.errors.count, "error") %> prohibited this meeting_minute from being saved:</h2>
+
+        <ul>
+          <% meeting_minute.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.label :content, style: "display: block" %>
+      <%= form.rich_text_area :content %>
+    </div>
+
+    <div>
+      <%= form.label :meeting_date, style: "display: block" %>
+      <%= form.date_field :meeting_date %>
+    </div>
+
+    <div>
+      <%= form.hidden_field :organization_id %>
+    </div>
+
+    <div>
+      <%= form.submit %>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.rich_text_area :content %>
-  </div>
-
-  <div>
-    <%= form.label :meeting_date, style: "display: block" %>
-    <%= form.date_field :meeting_date %>
-  </div>
-
-  <div>
-    <%= form.label :organization_id, style: "display: block" %>
-    <%= form.number_field :organization_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

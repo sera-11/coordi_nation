@@ -4,7 +4,7 @@
 
 <div>
   <%= link_to "Edit this meeting minute", edit_meeting_minute_path(@meeting_minute) %> |
-  <%= link_to "Back to meeting minutes", meeting_minutes_path %>
+  <a href="/organizations/<%= @meeting_minute.organization_id %>/meeting_minutes">Back to organization's meeting minutes</a>
 
   <%= button_to "Destroy this meeting minute", @meeting_minute, method: :delete %>
 </div>
