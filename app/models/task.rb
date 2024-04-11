@@ -15,7 +15,7 @@ class Task < ApplicationRecord
   belongs_to :member, foreign_key: "assigned_to_id"
   belongs_to :organization
 
-  enum status: { "Not started" => "not_started", "In progress" => "in_progress", "Completed" => "completed" }
+  enum status: { "Not started" => :not_started, "In progress" => :in_progress, "Completed" => :completed }
 
   after_initialize :set_default_status, if: :new_record?
 
