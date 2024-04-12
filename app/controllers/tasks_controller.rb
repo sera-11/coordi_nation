@@ -4,9 +4,9 @@ class TasksController < ApplicationController
   # GET /tasks or /tasks.json
   def index
     @organization = Organization.find(params[:organization_id])
-    @tasks_by_status = @organization.tasks.group(:status).order(status: :asc).count
+    @tasks = @organization.tasks
+
   end
-  
 
   # GET /tasks/1 or /tasks/1.json
   def show
@@ -63,15 +63,16 @@ class TasksController < ApplicationController
 
   def start
     @task = Task.find(params[:id])
-    @task.update(status: :in_progress)
+    @task.update(status: "in_progress")
     redirect_to tasks_path
   end
-
+  
   def complete
     @task = Task.find(params[:id])
-    @task.update(status: :completed)
+    @task.update(status: "completed")
     redirect_to tasks_path
   end
+  
 
   private
 
