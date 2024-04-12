@@ -3,8 +3,10 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    @organization = Organization.find(params[:organization_id])
+    @tasks_by_status = @organization.tasks.group(:status).order(status: :asc).count
   end
+  
 
   # GET /tasks/1 or /tasks/1.json
   def show
@@ -14,7 +16,6 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @task.organization_id = params[:organization_id]
-    
   end
 
   # GET /tasks/1/edit
@@ -60,16 +61,27 @@ class TasksController < ApplicationController
     end
   end
 
-  private
-  
-    # Use callbacks to share common setup or constraints between actions.
-    def set_task
-      @task = Task.find(params[:id])
-    end
+  def start
+    @task = Task.find(params[:id])
+    @task.update(status: :in_progress)
+    redirect_to tasks_path
+  end
 
-    # Only allow a list of trusted parameters through.
-    def task_params
-      params.require(:task).permit(:text, :due_date, :assigned_to_id, :organization_id, :status)
-    end
-    
+  def complete
+    @task = Task.find(params[:id])
+    @task.update(status: :completed)
+    redirect_to tasks_path
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_task
+    @task = Task.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def task_params
+    params.require(:task).permit(:text, :due_date, :assigned_to_id, :organization_id, :status)
+  end
 end

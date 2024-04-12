@@ -1,22 +1,23 @@
 <p style="color: green"><%= notice %></p>
 
 <div class="p-5">
-
-<%= render partial: "shared/org_nav" %>
+  <%= render partial: "shared/org_nav" %>
 
   <h3 class="text-center mt-4">Tasks</h3>
 
   <%= link_to "New task", new_organization_task_path(@organization), class: "btn btn-primary mb-3" %>
 
   <div id="tasks">
-    <% @tasks.each do |task| %>
-      <%= render task %>
-      <p>
-        <%= link_to "Show this task", task %>
-      </p>
+    <% @tasks_by_status.each do |status, tasks| %>
+      <h4><%= status.humanize %></h4>
+      <ul>
+        <% tasks.each do |task| %>
+          <%= render task %>
+          <p>
+            <%= link_to "Show this task", task %>
+          </p>
+        <% end %>
+      </ul>
     <% end %>
   </div>
-
-  
-
 </div>
