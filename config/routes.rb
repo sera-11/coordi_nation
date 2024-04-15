@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       get :members
       get :events
     end
+
+    resources :events
   end
   
 
