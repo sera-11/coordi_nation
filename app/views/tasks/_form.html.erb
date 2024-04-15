@@ -22,8 +22,8 @@
   </div>
 
   <div>
-    <%= form.label :assigned_to_id, style: "display: block" %>
-    <%= form.number_field :assigned_to_id %>
+    <%= form.label :assigned_to_id, "Assign To" %>
+    <%= form.select :assigned_to_id, options_for_select(@members.map { |member| [member.name, member.id] }) %>
   </div>
 
   <div>

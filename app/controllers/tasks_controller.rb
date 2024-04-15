@@ -13,12 +13,17 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
+    @organization = Organization.find(params[:organization_id])
     @task = Task.new
-    @task.organization_id = params[:organization_id]
+    @members = @organization.members
   end
+
 
   # GET /tasks/1/edit
   def edit
+    @task = Task.find(params[:id])
+    @organization = @task.organization
+    @members = @organization.members
   end
 
   # POST /tasks or /tasks.json
