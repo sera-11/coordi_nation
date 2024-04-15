@@ -16,12 +16,10 @@
     <%= form.text_field :name %>
   </div>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.number_field :user_id %>
-  </div>
+  <!-- Hide user_id field and set its value to current user's ID -->
+  <%= form.hidden_field :user_id, value: current_user.id %>
 
-  <div>
+  <div class="pt-2">
     <%= form.submit %>
   </div>
 <% end %>

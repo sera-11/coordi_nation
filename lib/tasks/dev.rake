@@ -27,7 +27,7 @@ unless Rails.env.production?
     # create users
     task add_users: :environment do
       puts "adding users..."
-      names = ["alice", "bob", "lisa"]
+      names = ["alice", "bob", "lisa", "sera"]
 
       names.each do |name|
         u = User.create!(
