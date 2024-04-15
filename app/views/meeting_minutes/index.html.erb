@@ -2,13 +2,12 @@
 
 <p style="color: green"><%= notice %></p>
 <div class="p-5">
-
   <%= render partial: "shared/org_nav" %>
-
+  
   <h3 class="text-center mt-4">Meeting Minutes</h3>
 
   <div id="meeting_minutes">
-    <% @meeting_minutes.each do |meeting_minute| %>
+    <% @meeting_minutes.sort_by { |meeting_minute| meeting_minute.meeting_date }.reverse_each do |meeting_minute| %>
       <p>
         <%= link_to meeting_minute.meeting_date.try(:strftime, '%Y %B %d'), meeting_minute %>
       </p>
@@ -16,6 +15,4 @@
   </div>
 
   <%= link_to "New Meeting Minute", new_organization_meeting_minute_path(@organization), class: "btn btn-primary" %>
-
-
 </div>
