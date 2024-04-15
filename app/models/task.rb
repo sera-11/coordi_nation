@@ -14,6 +14,8 @@
 class Task < ApplicationRecord
   belongs_to :member, foreign_key: "assigned_to_id"
   belongs_to :organization
+  belongs_to :assigned_to, class_name: "Member", foreign_key: "assigned_to_id"
+
 
   enum status: { not_started: "Not started", in_progress: "In progress", completed: "Completed" }
 

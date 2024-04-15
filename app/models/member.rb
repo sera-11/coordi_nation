@@ -23,4 +23,9 @@ class Member < ApplicationRecord
   validates :email, presence: true
   validates :phone_number, presence: true
   validates :role, presence: true
+
+  def name
+    "#{first_name} #{last_name}"
+  end
+
 end
