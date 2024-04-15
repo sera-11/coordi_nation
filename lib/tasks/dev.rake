@@ -19,7 +19,7 @@ unless Rails.env.production?
            "dev:add_events",
            "dev:add_meeting_minutes",
            "dev:add_members",
-           "dev:add_tasks"
+           "dev:add_tasks",
          ] do
       puts "done adding sample data"
     end
@@ -81,7 +81,7 @@ unless Rails.env.production?
         mm = MeetingMinute.create!(
           meeting_date: Faker::Date.forward(days: 100),
           organization_id: Organization.all.sample.id,
-          content: Faker::Lorem.paragraphs(number: 3).join("\n\n") # Sample content using Faker
+          content: Faker::Lorem.paragraphs(number: 3).join("\n\n"), # Sample content using Faker
         )
       end
     end # end of add_meeting_minutes
@@ -93,7 +93,7 @@ unless Rails.env.production?
         first_name = Faker::Name.first_name
         last_name = Faker::Name.last_name
         email = Faker::Internet.email(name: "#{first_name}_#{last_name}")
-    
+
         m = Member.create!(
           first_name: first_name,
           last_name: last_name,
@@ -101,7 +101,7 @@ unless Rails.env.production?
           birthday: Faker::Date.between(from: "1995-01-01", to: "2010-12-31"),
           phone_number: Faker::PhoneNumber.phone_number,
           role: "Member",
-          organization_id: Organization.all.sample.id
+          organization_id: Organization.all.sample.id,
         )
       end
     end # end of add_members
@@ -109,16 +109,18 @@ unless Rails.env.production?
     task add_tasks: :environment do
       puts "adding tasks..."
 
-      100.times do
-        t = Task.create!(
-          text: Faker::Lorem.sentence,
-          assigned_to_id: Member.all.sample.id,
-          organization_id: Organization.all.sample.id,
-          due_date: Faker::Date.forward(days: 30),
-          status: Task.statuses.keys.sample, # Assign a random status from the enum keys
-        )
+      Organization.all.each do |organization|
+        100.times do
+          t = Task.create!(
+            text: Faker::Lorem.sentence,
+            assigned_to_id: organization.members.sample.id, # Assign to a random member of the organization
+            organization_id: organization.id,
+            due_date: Faker::Date.forward(days: 30),
+            status: Task.statuses.keys.sample, # Assign a random status from the enum keys
+          )
+        end
       end
-    end # end of add_tasks
+    end
     puts "done"
   end
 end

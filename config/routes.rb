@@ -12,8 +12,12 @@ Rails.application.routes.draw do
     resources :meeting_minutes
     resources :events
     resources :members
-    resources :tasks
+    resources :tasks do
+      put :start, on: :member
+      put :complete, on: :member
+    end
   end
+  
 
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
