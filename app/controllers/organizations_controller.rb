@@ -3,9 +3,7 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations or /organizations.json
   def index
-    def index
-      @user_organizations = Organization.where(user_id: current_user.id)
-    end
+    @user_organizations = Organization.where(user_id: current_user.id)
   end
 
   # GET /organizations/1 or /organizations/1.json
@@ -62,35 +60,36 @@ class OrganizationsController < ApplicationController
   def meeting_minutes
     @organization = Organization.find(params[:id])
     @meeting_minutes = @organization.meeting_minutes # Assuming you have a relationship defined between Organization and MeetingMinutes models
-    render 'meeting_minutes/index'
+    render "meeting_minutes/index"
   end
 
   def members
     @organization = Organization.find(params[:id])
-    @members = @organization.members 
-    render 'members/index'
+    @members = @organization.members
+    render "members/index"
   end
 
   def tasks
     @organization = Organization.find(params[:id])
-    @tasks = @organization.tasks 
-    render 'tasks/index'
+    @tasks = @organization.tasks
+    render "tasks/index"
   end
 
   def events
     @organization = Organization.find(params[:id])
-    @events = @organization.events 
-    render 'events/index'
+    @events = @organization.events
+    render "events/index"
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_organization
-      @organization = Organization.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def organization_params
-      params.require(:organization).permit(:name, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_organization
+    @organization = Organization.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def organization_params
+    params.require(:organization).permit(:name, :user_id)
+  end
 end
