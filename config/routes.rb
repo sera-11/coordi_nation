@@ -12,13 +12,9 @@ Rails.application.routes.draw do
     resources :meeting_minutes
     resources :events
     resources :members
-    resources :tasks
-  end
-
-  resources :tasks do
-    member do
-      patch 'start'
-      patch 'complete'
+    resources :tasks do
+      put :start, on: :member
+      
     end
   end
   

@@ -4,8 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks or /tasks.json
   def index
     @organization = Organization.find(params[:organization_id])
-    @tasks = @organization.tasks
-
+    @tasks = @organization.tasks.order(due_date: :asc)
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -66,13 +65,12 @@ class TasksController < ApplicationController
     @task.update(status: "in_progress")
     redirect_to tasks_path
   end
-  
+
   def complete
     @task = Task.find(params[:id])
     @task.update(status: "completed")
     redirect_to tasks_path
   end
-  
 
   private
 
