@@ -110,7 +110,7 @@ unless Rails.env.production?
       puts "adding tasks..."
 
       Organization.all.each do |organization|
-        5.times do
+        0.times do
           t = Task.create!(
             text: Faker::Lorem.sentence,
             assigned_to_id: organization.members.sample.id, # Assign to a random member of the organization

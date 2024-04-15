@@ -1,28 +1,29 @@
 Rails.application.routes.draw do
+  # Define resources for top-level models
   resources :events
   resources :members
   resources :meeting_minutes
 
+  # Define nested resources for organizations
   resources :organizations do
-    # Define routes for new tasks within organizations
-    resources :tasks, only: [:new, :create]
-    
-    # Existing routes for meeting_minutes, members, events, and tasks
-    get "meeting_minutes", on: :member
-    get "members", on: :member
-    get "tasks", on: :member
-    get "events", on: :member
-    resources :meeting_minutes
-    resources :events
-    resources :members
-    resources :tasks do
-      put :start, on: :member
-      put :complete, on: :member
+    resources :tasks, only: [:new, :create, :index] do
+      member do
+        put :start
+        put :complete
+      end
+    end
+  
+    member do
+      get :meeting_minutes
+      get :members
+      get :events
     end
   end
   
+
+  # Devise routes for user authentication
   devise_for :users
 
+  # Define root route
   root "home#index"
 end
-

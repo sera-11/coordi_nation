@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_organization
 
   # GET /tasks or /tasks.json
   def index
@@ -27,28 +28,31 @@ class TasksController < ApplicationController
   end
 
   # POST /tasks or /tasks.json
-  def create
-    @organization = Organization.find(params[:organization_id])
-    @task = @organization.tasks.new(task_params) # Build the task associated with the organization
-    @task.status = :not_started
-    @members = @organization.members # Initialize @members
+def create
+  @organization = Organization.find(params[:organization_id])
+  @task = @organization.tasks.new(task_params) # Build the task associated with the organization
+  @task.status = :not_started
 
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to task_url(@task), notice: "Task was successfully created." }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+  # Initialize @members
+  @members = @organization.members
+
+  respond_to do |format|
+    if @task.save
+      format.html { redirect_to organization_task_path(@organization, @task), notice: "Task was successfully created." }
+      format.json { render :show, status: :created, location: @task }
+    else
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @task.errors, status: :unprocessable_entity }
     end
   end
+end
+
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to task_url(@task), notice: "Task was successfully updated." }
+        format.html { redirect_to task_path(@task), notice: "Task was successfully updated." }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -72,7 +76,7 @@ class TasksController < ApplicationController
     @task.update(status: :in_progress)
     redirect_to organization_tasks_path(@task.organization)
   end
-  
+
   def complete
     @task = Task.find(params[:id])
     @task.update(status: :completed)
@@ -80,6 +84,10 @@ class TasksController < ApplicationController
   end
 
   private
+
+  def set_organization
+    @organization = Organization.find(params[:organization_id])
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_task
