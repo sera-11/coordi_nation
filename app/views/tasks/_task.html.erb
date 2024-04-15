@@ -1,6 +1,9 @@
 <div id="<%= dom_id(task) %>">
-  <p><strong>Task:</strong> <%= task.text %></p>
-  <p><strong>Due by:</strong> <%= task.due_date.strftime("%A, %B %e, %Y") %></p>
-  <p><strong>Assigned to:</strong> <%= task.assigned_to.name if task.assigned_to %></p>
-  <!--<p><strong>Status:</strong> <%#= task.status.humanize %></p>-->
+  <div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%= task.text %></li>
+    <li class="list-group-item"><%= task.due_date.strftime("%A, %B %e, %Y") %></li>
+    <li class="list-group-item"><%= task.assigned_to.name if task.assigned_to %></li>
+  </ul>
+</div>
 </div>

@@ -7,6 +7,7 @@
 
   <%= link_to "New task", new_organization_task_path(@organization), class: "btn btn-primary mb-3" %>
 
+
   <div class="row">
     <div class="col-md-4">
       <h3>Not Started</h3>
@@ -28,6 +29,7 @@
       <h3>Completed</h3>
       <% @tasks.select { |task| task.status == "completed" }.each do |task| %>
         <%= render task %>
+        <br>
       <% end %>
     </div>
   </div>
