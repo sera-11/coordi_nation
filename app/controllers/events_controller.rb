@@ -58,16 +58,16 @@ class EventsController < ApplicationController
 
   # DELETE /events/1 or /events/1.json
   def destroy
-    @organization = Organization.find(params[:organization_id])
     @event = @organization.events.find(params[:id])
     @event.destroy
-  
+    
     respond_to do |format|
       format.html { redirect_to organization_events_url(@organization), notice: "Event was successfully destroyed." }
       format.json { head :no_content }
     end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to organization_events_url(@organization), alert: "Event not found."
   end
-  
 
 
   private
