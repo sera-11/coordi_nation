@@ -69,14 +69,14 @@ class TasksController < ApplicationController
 
   def start
     @task = Task.find(params[:id])
-    @task.update(status: "in_progress")
-    redirect_to tasks_path
+    @task.update(status: :in_progress)
+    redirect_to organization_tasks_path(@task.organization)
   end
-
+  
   def complete
     @task = Task.find(params[:id])
-    @task.update(status: "completed")
-    redirect_to tasks_path
+    @task.update(status: :completed)
+    redirect_to organization_tasks_path(@task.organization)
   end
 
   private
