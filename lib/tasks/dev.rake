@@ -89,7 +89,7 @@ unless Rails.env.production?
     # create members
     task add_members: :environment do
       puts "adding members..."
-      50.times do
+      200.times do
         first_name = Faker::Name.first_name
         last_name = Faker::Name.last_name
         email = Faker::Internet.email(name: "#{first_name}_#{last_name}")

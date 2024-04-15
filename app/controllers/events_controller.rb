@@ -1,5 +1,8 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :set_organization, only: [:show, :edit, :update, :destroy]
+
+
 
   # GET /events or /events.json
   def index
@@ -8,7 +11,12 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
+    @organization = Organization.find(params[:organization_id])
+    @event = @organization.events.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: 'Organization or event not found.'
   end
+  
 
   # GET /events/new
   def new
@@ -50,15 +58,23 @@ class EventsController < ApplicationController
 
   # DELETE /events/1 or /events/1.json
   def destroy
+    @organization = Organization.find(params[:organization_id])
+    @event = @organization.events.find(params[:id])
     @event.destroy
-
+  
     respond_to do |format|
-      format.html { redirect_to events_url, notice: "Event was successfully destroyed." }
+      format.html { redirect_to organization_events_url(@organization), notice: "Event was successfully destroyed." }
       format.json { head :no_content }
     end
   end
+  
+
 
   private
+
+  def set_organization
+    @organization = Organization.find(params[:organization_id])
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_event
