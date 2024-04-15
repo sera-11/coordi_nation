@@ -1,5 +1,4 @@
 <div class="p-5 mt-2">
-
   <h1>New task</h1>
 
   <%= render "form", task: @task %>
@@ -7,6 +6,6 @@
   <br>
 
   <div>
-    <a href="/organizations/<%= @task.organization_id %>/tasks">Back to organization's tasks</a>
+    <%= link_to "Back to organization's tasks", organization_tasks_path(@task.organization_id) %>
   </div>
 </div>

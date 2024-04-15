@@ -5,6 +5,7 @@ class TasksController < ApplicationController
   def index
     @organization = Organization.find(params[:organization_id])
     @tasks = @organization.tasks.order(due_date: :asc)
+    @members = @organization.members
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -18,7 +19,6 @@ class TasksController < ApplicationController
     @members = @organization.members
   end
 
-
   # GET /tasks/1/edit
   def edit
     @task = Task.find(params[:id])
@@ -28,8 +28,10 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    @task = Task.new(task_params)
+    @organization = Organization.find(params[:organization_id])
+    @task = @organization.tasks.new(task_params) # Build the task associated with the organization
     @task.status = :not_started
+    @members = @organization.members # Initialize @members
 
     respond_to do |format|
       if @task.save
