@@ -12,7 +12,8 @@
     <% @tasks.each do |task| %>
       <% if task.status == "not_started" %>
         <%= render task %>
-        <%= button_to "Start", start_organization_task_path(task), method: :put, class: "btn btn-success" %>
+        <%= button_to "Start", start_organization_task_path(@organization, task), method: :put, class: "btn btn-success" %>
+
 
       <% end %>
     <% end %>
@@ -21,6 +22,7 @@
     <% @tasks.each do |task| %>
       <% if task.status == "in_progress" %>
         <%= render task %>
+        <%= button_to "Complete", complete_organization_task_path(@organization, task), method: :put, class: "btn btn-success" %>
       <% end %>
     <% end %>
 

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :members
     resources :tasks do
       put :start, on: :member
-      
+      put :complete, on: :member
     end
   end
   
