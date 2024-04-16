@@ -19,10 +19,9 @@ Rails.application.routes.draw do
       get :events
     end
 
-    resources :events
+    resources :events # Define routes for events associated with organizations
   end
   
-
   # Devise routes for user authentication
   devise_for :users
 

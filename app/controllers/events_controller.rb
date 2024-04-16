@@ -2,8 +2,6 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
 
-
-
   # GET /events or /events.json
   def index
     @events = Event.all
@@ -14,9 +12,8 @@ class EventsController < ApplicationController
     @organization = Organization.find(params[:organization_id])
     @event = @organization.events.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, alert: 'Organization or event not found.'
+    redirect_to root_path, alert: "Organization or event not found."
   end
-  
 
   # GET /events/new
   def new
@@ -34,7 +31,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to event_url(@event), notice: "Event was successfully created." }
+        format.html { redirect_to organization_events_url(@event.organization), notice: "Event was successfully created." }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -56,11 +53,10 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1 or /events/1.json
   def destroy
     @event = @organization.events.find(params[:id])
     @event.destroy
-    
+
     respond_to do |format|
       format.html { redirect_to organization_events_url(@organization), notice: "Event was successfully destroyed." }
       format.json { head :no_content }
@@ -68,7 +64,6 @@ class EventsController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     redirect_to organization_events_url(@organization), alert: "Event not found."
   end
-
 
   private
 
