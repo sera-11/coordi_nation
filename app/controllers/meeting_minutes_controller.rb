@@ -1,9 +1,11 @@
 class MeetingMinutesController < ApplicationController
-  before_action :set_meeting_minute, only: %i[ show edit update destroy ]
+  before_action :set_meeting_minute, only: %i[show edit update destroy]
+  before_action :set_organization
+
 
   # GET /meeting_minutes or /meeting_minutes.json
   def index
-    @meeting_minutes = MeetingMinute.all
+    @meeting_minutes = @organization.meeting_minutes
   end
 
   # GET /meeting_minutes/1 or /meeting_minutes/1.json
@@ -12,8 +14,8 @@ class MeetingMinutesController < ApplicationController
 
   # GET /meeting_minutes/new
   def new
-    @meeting_minute = MeetingMinute.new
-    @meeting_minute.organization_id = params[:organization_id]
+    @organization = Organization.find(params[:organization_id])
+    @meeting_minute = @organization.meeting_minutes.build
   end
 
   # GET /meeting_minutes/1/edit
@@ -59,13 +61,18 @@ class MeetingMinutesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_meeting_minute
-      @meeting_minute = MeetingMinute.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def meeting_minute_params
-      params.require(:meeting_minute).permit(:content, :meeting_date, :organization_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_organization
+    @organization = Organization.find(params[:organization_id])
+  end
+  
+  def set_meeting_minute
+    @meeting_minute = MeetingMinute.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def meeting_minute_params
+    params.require(:meeting_minute).permit(:content, :meeting_date, :organization_id)
+  end
 end

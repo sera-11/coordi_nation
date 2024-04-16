@@ -1,6 +1,5 @@
 <div class="p-5">
-
-  <%= form_with(model: meeting_minute) do |form| %>
+  <%= form_with(model: [@organization, @meeting_minute]) do |form| %>
     <% if meeting_minute.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(meeting_minute.errors.count, "error") %> prohibited this meeting_minute from being saved:</h2>

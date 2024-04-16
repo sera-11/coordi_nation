@@ -1,7 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy, :meeting_minutes, :members, :tasks, :events]
 
-
   # GET /organizations or /organizations.json
   def index
     @user_organizations = Organization.where(user_id: current_user.id)
@@ -10,7 +9,6 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1 or /organizations/1.json
   def show
   end
-  
 
   # GET /organizations/new
   def new
@@ -61,33 +59,27 @@ class OrganizationsController < ApplicationController
 
   def meeting_minutes
     @organization = Organization.find(params[:id])
-    @meeting_minutes = @organization.meeting_minutes # Assuming you have a relationship defined between Organization and MeetingMinutes models
+    @meeting_minutes = @organization.meeting_minutes
     render "meeting_minutes/index"
   end
-
+  
   def members
-    @organization = Organization.find(params[:id])
+    @organization = Organization.find(params[:organization_id])
     @members = @organization.members
     render "members/index"
   end
-
+  
   def tasks
-    @organization = Organization.find(params[:id])
+    @organization = Organization.find(params[:organization_id])
     @tasks = @organization.tasks
     render "tasks/index"
   end
-
+  
   def events
-    @organization = Organization.find(params[:id])
+    @organization = Organization.find(params[:organization_id])
     @events = @organization.events
     render "events/index"
   end
-
-  def new_organization_meeting_minute
-    @organization = Organization.find(params[:organization_id])
-    @meeting_minute = MeetingMinute.new
-  end
-  
 
   private
 

@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
   before_action :set_member, only: %i[ show edit update destroy ]
+  before_action :set_organization
 
   # GET /members or /members.json
   def index
@@ -59,6 +60,12 @@ class MembersController < ApplicationController
   end
 
   private
+
+  def set_organization
+    @organization = Organization.find(params[:organization_id])
+  end
+
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_member
       @member = Member.find(params[:id])
