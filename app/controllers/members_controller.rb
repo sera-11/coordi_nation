@@ -62,8 +62,9 @@ class MembersController < ApplicationController
   private
 
   def set_organization
-    @organization = Organization.find(params[:organization_id])
+    @organization = Organization.find(params[:organization_id]) if params[:organization_id].present?
   end
+  
 
   
     # Use callbacks to share common setup or constraints between actions.

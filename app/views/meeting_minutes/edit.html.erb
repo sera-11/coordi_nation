@@ -5,6 +5,7 @@
 <br>
 
 <div>
-  <%= link_to "Show this meeting minute", @meeting_minute %> |
-  <%= link_to "Back to meeting minutes", meeting_minutes_path %>
+<%= link_to "Show this meeting minute", organization_meeting_minute_path(@organization, @meeting_minute) %>
+ <%= link_to "Back to meeting minutes", organization_meeting_minutes_path(@organization) %>
+
 </div>

@@ -5,9 +5,11 @@
   <%= render @meeting_minute %>
 
   <div>
-    <%= link_to "Edit this meeting minute", edit_meeting_minute_path(@meeting_minute) %> |
+    <%= link_to "Edit this meeting minute", edit_organization_meeting_minute_path(@organization, @meeting_minute) %>
+ |
     <a href="/organizations/<%= @meeting_minute.organization_id %>/meeting_minutes">Back to organization's meeting minutes</a>
 
-    <%= button_to "Destroy this meeting minute", @meeting_minute, method: :delete %>
+    <%= button_to "Destroy this meeting minute", organization_meeting_minute_path(@organization, @meeting_minute), method: :delete, data: { confirm: 'Are you sure?' } %>
+
   </div>
 </div>

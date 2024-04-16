@@ -61,8 +61,8 @@ unless Rails.env.production?
         event_start_time = Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :day)
         event_end_time = event_start_time + rand(1..8).hours # Adding random hours for the event duration
         e = Event.create!(
-          title: "Sample event",
-          description: "Sample description",
+          title: Faker::TvShows::Friends.location,
+          description: Faker::TvShows::HowIMetYourMother.catch_phrase,
           event_date: Faker::Date.between(from: "2024-04-08", to: "2024-09-25"),
           start_time: event_start_time,
           end_time: event_end_time,

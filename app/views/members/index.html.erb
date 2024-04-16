@@ -24,7 +24,8 @@
             <td> <%= member.first_name %> </td>
             <td> <%= member.last_name %> </td>
             <td> <%= member.email %> </td>
-            <td> <%= link_to "Show this member", member %> </td>
+            <td> <%= link_to "Show this member", organization_member_path(@organization, member) %> </td>
+
           </tr>
         <%end%>
       </tbody>

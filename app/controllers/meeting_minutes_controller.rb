@@ -25,10 +25,12 @@ class MeetingMinutesController < ApplicationController
   # POST /meeting_minutes or /meeting_minutes.json
   def create
     @meeting_minute = MeetingMinute.new(meeting_minute_params)
+    @organization = Organization.find(params[:organization_id])
+
 
     respond_to do |format|
       if @meeting_minute.save
-        format.html { redirect_to meeting_minute_url(@meeting_minute), notice: "Meeting minute was successfully created." }
+        format.html { redirect_to organization_meeting_minute_path(@organization, @meeting_minute), notice: "Meeting minute was successfully created." }
         format.json { render :show, status: :created, location: @meeting_minute }
       else
         format.html { render :new, status: :unprocessable_entity }
