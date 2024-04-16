@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   # Define resources for top-level models
   resources :events
   resources :members
-  resources :meeting_minutes
 
   # Define nested resources for organizations
   resources :organizations do
@@ -12,7 +11,9 @@ Rails.application.routes.draw do
         put :complete
       end
     end
-  
+
+    resources :members # Add nested resources for members within organizations
+
     member do
       get :meeting_minutes
       get :members
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
     end
 
     resources :events # Define routes for events associated with organizations
+    resources :meeting_minutes # Define routes for meeting minutes associated with organizations
   end
   
   # Devise routes for user authentication

@@ -7,10 +7,15 @@
   <h3 class="text-center mt-4">Meeting Minutes</h3>
 
   <div id="meeting_minutes">
-    <% @meeting_minutes.sort_by { |meeting_minute| meeting_minute.meeting_date }.reverse_each do |meeting_minute| %>
-      <p>
-        <%= link_to meeting_minute.meeting_date.try(:strftime, '%Y %B %d'), meeting_minute %>
-      </p>
+    <% if @meeting_minutes.present? %>
+      <% @meeting_minutes.sort_by { |meeting_minute| meeting_minute.meeting_date }.reverse_each do |meeting_minute| %>
+        <p>
+          <%= link_to meeting_minute.meeting_date.try(:strftime, '%Y %B %d'), organization_meeting_minute_path(@organization, meeting_minute) %>
+
+        </p>
+      <% end %>
+    <% else %>
+      <p>No meeting minutes available.</p>
     <% end %>
   </div>
 

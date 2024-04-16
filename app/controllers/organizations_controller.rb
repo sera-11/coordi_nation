@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
-  before_action :set_organization, only: %i[ show edit update destroy ]
+  before_action :set_organization, only: [:show, :edit, :update, :destroy, :meeting_minutes, :members, :tasks, :events]
+
 
   # GET /organizations or /organizations.json
   def index
@@ -9,6 +10,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1 or /organizations/1.json
   def show
   end
+  
 
   # GET /organizations/new
   def new
@@ -80,6 +82,12 @@ class OrganizationsController < ApplicationController
     @events = @organization.events
     render "events/index"
   end
+
+  def new_organization_meeting_minute
+    @organization = Organization.find(params[:organization_id])
+    @meeting_minute = MeetingMinute.new
+  end
+  
 
   private
 
