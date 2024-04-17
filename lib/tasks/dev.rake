@@ -110,9 +110,9 @@ unless Rails.env.production?
       puts "adding tasks..."
 
       Organization.all.each do |organization|
-        0.times do
+        20.times do
           t = Task.create!(
-            text: Faker::Lorem.sentence,
+            text: Faker::TvShows::TheITCrowd.quote,
             assigned_to_id: organization.members.sample.id, # Assign to a random member of the organization
             organization_id: organization.id,
             due_date: Faker::Date.forward(days: 30),
