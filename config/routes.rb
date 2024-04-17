@@ -5,9 +5,8 @@ Rails.application.routes.draw do
 
   # Define nested resources for organizations
   resources :organizations do
-
     resources :meeting_minutes 
-    resources :events
+    resources :events # Define routes for events associated with organizations
 
     resources :tasks, only: [:new, :create, :index] do
       member do
@@ -24,7 +23,6 @@ Rails.application.routes.draw do
       get :events
     end
 
-    resources :events # Define routes for events associated with organizations
     resources :meeting_minutes, only: [:index, :new, :create]  # adjust the actions as needed
   end
   

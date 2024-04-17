@@ -43,7 +43,7 @@ class MeetingMinutesController < ApplicationController
   def update
     respond_to do |format|
       if @meeting_minute.update(meeting_minute_params)
-        format.html { redirect_to meeting_minute_url(@meeting_minute), notice: "Meeting minute was successfully updated." }
+        format.html { redirect_to organization_meeting_minute_path(@organization, @meeting_minute), notice: "Meeting minute was successfully updated." }
         format.json { render :show, status: :ok, location: @meeting_minute }
       else
         format.html { render :edit, status: :unprocessable_entity }
