@@ -9,7 +9,7 @@
 
     <a href="/organizations/<%= @member.organization_id %>/members">Back to organization's members</a>
 
-    <%= button_to "Destroy this member", @member, method: :delete %>
+    <%= button_to "Destroy this member", organization_member_path(@organization, @member), method: :delete %>
   </div>
 
 </div>
