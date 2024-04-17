@@ -23,8 +23,6 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    set_organization
-    @event = @organization.events.find(params[:id])
   end
 
   # POST /events or /events.json
@@ -44,10 +42,11 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1 or /events/1.json
   def update
+
+
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to organization_events_url(@event.organization), notice: "Event was successfully updated." }
-
+        format.html {redirect_to organization_events_url(@event.organization), notice: "Event was successfully updated." }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -72,7 +71,7 @@ class EventsController < ApplicationController
   private
 
   def set_organization
-    @organization = Organization.find(params[:organization_id])
+    @organization = Organization.find(params[:organization_id]) if params[:organization_id].present?
   end
 
   # Use callbacks to share common setup or constraints between actions.
