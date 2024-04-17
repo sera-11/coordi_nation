@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :organizations do
     resources :meeting_minutes 
     resources :events # Define routes for events associated with organizations
+    resources :members 
 
     resources :tasks, only: [:new, :create, :index] do
       member do

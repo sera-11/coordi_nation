@@ -9,6 +9,7 @@ class MembersController < ApplicationController
 
   # GET /members/1 or /members/1.json
   def show
+    set_organization
   end
 
   # GET /members/new
@@ -49,6 +50,7 @@ class MembersController < ApplicationController
     end
   end
   
+  
 
   # DELETE /members/1 or /members/1.json
   def destroy
@@ -65,9 +67,6 @@ class MembersController < ApplicationController
   def set_organization
     @organization = Organization.find(params[:organization_id]) if params[:organization_id].present?
   end
-  
-  
-
   
     # Use callbacks to share common setup or constraints between actions.
     def set_member

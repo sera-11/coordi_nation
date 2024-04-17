@@ -5,7 +5,7 @@
   <%= render @member %>
 
   <div>
-    <%= link_to "Edit this member", edit_member_path(@member) %> |
+    <%= link_to "Edit this member", edit_organization_member_path(@organization, @member) %> |
 
     <a href="/organizations/<%= @member.organization_id %>/members">Back to organization's members</a>
 
