@@ -57,7 +57,7 @@ class MembersController < ApplicationController
     @member.destroy
 
     respond_to do |format|
-      format.html { redirect_to members_url, notice: "Member was successfully destroyed." }
+      format.html { redirect_to organization_members_url(@organization), notice: "Member was successfully destroyed." }
       format.json { head :no_content }
     end
   end

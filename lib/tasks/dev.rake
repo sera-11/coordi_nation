@@ -57,7 +57,7 @@ unless Rails.env.production?
     task add_events: :environment do
       puts "adding events..."
 
-      20.times do
+      50.times do
         event_start_time = Faker::Time.between_dates(from: Date.today - 1, to: Date.today, period: :day)
         event_end_time = event_start_time + rand(1..8).hours # Adding random hours for the event duration
         e = Event.create!(
