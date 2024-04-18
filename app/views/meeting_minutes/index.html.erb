@@ -14,7 +14,7 @@
             <%= link_to meeting_minute.meeting_date.try(:strftime, '%Y %B %d'), organization_meeting_minute_path(@organization, meeting_minute) %>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%=meeting_minute.content%></li>
+            <li class="list-group-item"><%=meeting_minute.content.to_plain_text.truncate(50)%></li>
           </ul>
         </div>
         <br>
