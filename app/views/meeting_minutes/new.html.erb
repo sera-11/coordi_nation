@@ -1,4 +1,6 @@
 <h1>New meeting minute</h1>
 
-<%= render "form", meeting_minute: @meeting_minute %>
+  <%= link_to "New Meeting Minute", new_organization_meeting_minute_path(@organization), class: "btn btn-primary" %>
 
+
+<%= render "form", meeting_minute: @meeting_minute %>
