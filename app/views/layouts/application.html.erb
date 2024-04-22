@@ -8,11 +8,12 @@
     <%= csp_meta_tag %>
 
     <%= render partial: "shared/cdn_assets" %>
-    <link rel="stylesheet" href="styles.css">
+    <%= stylesheet_link_tag 'styles', 'data-turbo-track': 'reload' %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
-    <script src="scripts.js"></script>
+    <%= javascript_include_tag 'scripts', 'data-turbo-track': 'reload' %>
+
     <%= javascript_importmap_tags %>
   </head>
 
@@ -20,7 +21,6 @@
 
     <%= render partial: "shared/nav" %>
 
-    
     <%= yield %>
   </body>
 </html>
