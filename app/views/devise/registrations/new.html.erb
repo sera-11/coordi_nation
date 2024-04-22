@@ -17,6 +17,13 @@
             </div>
             
             <div class="form-group">
+              <%= f.input :username,
+                        required: true,
+                        input_html: { class: 'form-control', autocomplete: 'username' },
+                        label_html: { class: 'control-label' } %>
+            </div>
+
+            <div class="form-group">
               <%= f.input :password,
                         required: true,
                         hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
