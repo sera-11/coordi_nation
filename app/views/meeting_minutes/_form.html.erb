@@ -13,21 +13,23 @@
     <% end %>
 
     <div>
-      <%= form.label :content, style: "display: block" %>
-      <%= form.rich_text_area :content %>
-    </div>
-
-    <div>
       <%= form.label :meeting_date, style: "display: block" %>
       <%= form.date_field :meeting_date %>
+    </div>
+    <br>
+    <div>
+      <%= form.hidden_field :content, style: "display: block" %>
+      <%= form.rich_text_area :content %>
     </div>
 
     <div>
       <%= form.hidden_field :organization_id %>
     </div>
-
+    <br>
     <div>
-      <%= form.submit %>
+      <%= form.button :submit, class: "btn btn-primary" %>
+      <a href="/organizations/<%= @organization.id %>/meeting_minutes" class="btn btn-secondary">Back to meeting minutes</a>
     </div>
+
   <% end %>
 </div>

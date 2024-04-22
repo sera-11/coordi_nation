@@ -9,14 +9,23 @@
   <div id="meeting_minutes">
     <% if @meeting_minutes.present? %>
       <% @meeting_minutes.sort_by { |meeting_minute| meeting_minute.meeting_date }.reverse_each do |meeting_minute| %>
-        <p>
-          <%= link_to meeting_minute.meeting_date.try(:strftime, '%Y %B %d'), organization_meeting_minute_path(@organization, meeting_minute) %>
-        </p>
+        <div class="card" style="width: 18rem;">
+          <div class="card-header text-center">
+            <%= link_to meeting_minute.meeting_date.try(:strftime, '%Y %B %d'), organization_meeting_minute_path(@organization, meeting_minute) %>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><%=meeting_minute.content.to_plain_text.truncate(50)%></li>
+          </ul>
+        </div>
+        <br>
       <% end %>
     <% else %>
       <p>No meeting minutes available.</p>
     <% end %>
   </div>
 
+
   <%= link_to "New Meeting Minute", new_organization_meeting_minute_path(@organization), class: "btn btn-primary" %>
+  
+
 </div>
