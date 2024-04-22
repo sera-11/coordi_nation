@@ -2,16 +2,24 @@
 
   <p style="color: green" class="pt-3"><%= notice %></p>
 
-  <h1>Organizations</h1>
+  <div class="container">
+    <div class="row justify-content-center mt-2">
+      <div class="col text-center">
+        <h1 class="mb-0">Organizations</h1>
+      </div>
+      <div class="col-auto">
+        <%= link_to new_organization_path, class: "btn btn-primary pb-2 mb-0", style: "background-color: #09be82; border-color: #09be82;" do %>
+          <i class="fa-solid fa-square-plus fa-lg" style="color: #fff;"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-  <div id="organizations">
+  <div class="row justify-content-center">
     <% @user_organizations.each do |organization| %>
       <%= link_to organization.name, organization %>
       <br>
     <% end %>
   </div>
-
-
-  <%= link_to "New organization", new_organization_path, class: "btn-primary btn mt-3" %>
 
 </div>
