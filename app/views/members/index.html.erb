@@ -10,7 +10,6 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">#</th>
           <th scope="col">First</th>
           <th scope="col">Last</th>
           <th scope="col">Email</th>
@@ -18,9 +17,8 @@
         </tr>
       </thead>
       <tbody>
-        <% @members.each_with_index do |member, count | %>
+        <% @members.each do |member| %>
           <tr>
-            <th scope="row"> <%= count + 1 + (params[:page].to_i - 1) * 25 %>  </th>
             <td> <%= member.first_name %> </td>
             <td> <%= member.last_name %> </td>
             <td> <%= member.email %> </td>
