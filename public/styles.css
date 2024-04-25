@@ -10841,3 +10841,27 @@ section {
 .usr{
   color: white;
 }
+
+
+.simple-calendar .table td.calendar-cell {
+  height: 100px; /* Set a fixed height for all cells */
+  vertical-align: top; /* Align content to the top of the cell */
+  padding: 10px; /* Add padding for spacing */
+}
+
+.simple-calendar .table th {
+  text-align: center; /* Center-align the content of all table header cells */
+}
+
+/* calendar.css */
+.calendar-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+}
+
+.calendar-heading {
+  text-align: center;
+}
+
+
