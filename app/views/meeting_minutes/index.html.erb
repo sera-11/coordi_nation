@@ -21,21 +21,24 @@
         <div class="col-md-4 mb-3 d-flex justify-content-center"> <!-- Add justify-content-center class to center the cards -->
           <div class="card" style="width: 18rem;"> <!-- Specify a fixed width for the cards -->
             <div class="card-header text-center">
-              <%= link_to meeting_minute.meeting_date.try(:strftime, '%Y %B %d'), organization_meeting_minute_path(@organization, meeting_minute) %>
+              <%= link_to meeting_minute.meeting_date.try(:strftime, '%Y %B %d'), organization_meeting_minute_path(@organization, meeting_minute), class: "link-meeting" %>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item"><%= meeting_minute.content.to_plain_text.truncate(50) %></li>
             </ul>
             <div class="card-footer d-flex justify-content-between">
-  <%= link_to edit_organization_meeting_minute_path(@organization, meeting_minute) do %>
+  <%= link_to edit_organization_meeting_minute_path(@organization, meeting_minute), class:"btn edit-btn" do %>
     <i class="fa-solid fa-pen-to-square"></i>
   <% end %>
 
-  <%= link_to organization_meeting_minute_path(@organization, meeting_minute),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } do %>
-    <i class="fa-solid fa-trash" style="color: #d60000"></i>
-  <% end %>
+  <%= button_to organization_meeting_minute_path(@organization, meeting_minute),
+            method: :delete,
+            data: { confirm: 'Are you sure?' },
+            class: "btn delete-btn" do %>
+  <i class="fa-solid fa-trash"></i>
+<% end %>
+
+
 </div>
 
           </div>

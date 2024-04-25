@@ -10895,3 +10895,59 @@ section {
 .add-new-btn:hover{
   background-color: darkgreen;
 }
+
+.form-exit-button{
+  color: #fd7272;
+  background-color: white;
+  border: none;
+  height: 30px;
+  padding-bottom: 2px;
+}
+
+.form-exit-button:hover{
+  color: darkred;
+  background-color: white;
+  border: none;
+}
+
+.form-submit-button{
+  color: #0a58ca;
+  background-color: transparent;
+} 
+
+.edit-btn{
+  color: #3268a8;
+  background-color: transparent;
+  border: none;
+}
+
+.edit-btn:hover{
+  color: darkblue;
+  background-color: transparent;
+  border: none;
+}
+
+.back-btn{
+  color: gray;
+  background-color: transparent;
+  border: none;
+}
+
+.delete-btn{
+  color: #fd7272;
+  background-color: transparent;
+  border: none;
+}
+
+.link-meeting{
+  text-decoration: none;
+}
+
+.member-chart{
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.member-chart .table{
+  text-align: left;
+}

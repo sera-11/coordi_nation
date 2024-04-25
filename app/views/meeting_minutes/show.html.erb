@@ -2,14 +2,26 @@
 
   <p class="pt-2" style="color: green"><%= notice %></p>
 
+    <div class="justify-content-center d-inline-flex">
+  <%= link_to "/organizations/#{@meeting_minute.organization_id}/meeting_minutes",
+              class: "back-btn btn btn-secondary btn-lg mr-2" do %>
+    <i class="fa-solid fa-arrow-left"></i> 
+  <% end %>
+
+  <%= link_to edit_organization_meeting_minute_path(@organization, @meeting_minute),
+              class: "edit-btn btn btn-secondary btn-lg mr-2" do %>
+    <i class="fa-regular fa-pen-to-square"></i> 
+  <% end %>
+
+  <%= button_to organization_meeting_minute_path(@organization, @meeting_minute),
+              method: :delete,
+              data: { confirm: 'Are you sure?' },
+              class: "delete-btn btn btn-danger btn-lg" do %>
+    <i class="fa-solid fa-trash-can"></i> 
+  <% end %>
+</div>
+
   <%= render @meeting_minute %>
 
-  <div>
-    <%= link_to "Edit this meeting minute", edit_organization_meeting_minute_path(@organization, @meeting_minute) %>
- |
-    <a href="/organizations/<%= @meeting_minute.organization_id %>/meeting_minutes">Back to organization's meeting minutes</a>
 
-    <%= button_to "Destroy this meeting minute", organization_meeting_minute_path(@organization, @meeting_minute), method: :delete, data: { confirm: 'Are you sure?' } %>
-
-  </div>
 </div>
