@@ -10886,3 +10886,12 @@ section {
   transform: translate(-50%, -50%); /* Center the circle */
   z-index: -1; /* Ensure the outline is behind the number */
 }
+
+.add-new-btn{
+  background-color: #09be82;
+  border-color: #069d6d;
+}
+
+.add-new-btn:hover{
+  background-color: darkgreen;
+}
