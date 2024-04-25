@@ -1,11 +1,4 @@
-<h1>Editing meeting minute</h1>
+<div class="p-5">
 
-<%= render "form", meeting_minute: @meeting_minute %>
-
-<br>
-
-<div>
-<%= link_to "Show this meeting minute", organization_meeting_minute_path(@organization, @meeting_minute) %>
- <%= link_to "Back to meeting minutes", organization_meeting_minutes_path(@organization) %>
-
+  <%= render "form", meeting_minute: @meeting_minute %>
 </div>

@@ -21,7 +21,6 @@ Rails.application.routes.draw do
       get :events
     end
 
-    resources :meeting_minutes, only: [:index, :new, :create]  # adjust the actions as needed
   end
   
   # Devise routes for user authentication

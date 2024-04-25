@@ -10912,5 +10912,33 @@ section {
 
 .form-submit-button{
   color: #0a58ca;
-  background-color: white;
+  background-color: transparent;
 } 
+
+.edit-btn{
+  color: #3268a8;
+  background-color: transparent;
+  border: none;
+}
+
+.edit-btn:hover{
+  color: darkblue;
+  background-color: transparent;
+  border: none;
+}
+
+.back-btn{
+  color: gray;
+  background-color: transparent;
+  border: none;
+}
+
+.delete-btn{
+  color: #fd7272;
+  background-color: transparent;
+  border: none;
+}
+
+.link-meeting{
+  text-decoration: none;
+}
