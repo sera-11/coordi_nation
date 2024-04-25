@@ -83,6 +83,7 @@ end
     redirect_to organization_tasks_path(@task.organization)
   end
 
+
   private
 
   def set_organization

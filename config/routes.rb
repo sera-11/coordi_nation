@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         put :start
         put :complete
       end
-    end
+    end    
 
     member do
       get :meeting_minutes
