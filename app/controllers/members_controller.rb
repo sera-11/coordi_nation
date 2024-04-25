@@ -4,12 +4,12 @@ class MembersController < ApplicationController
 
   # GET /members or /members.json
   def index
-    @members = Member.all
+    @members = @organization.members.page(params[:page]).per(15)
+    @total_members = @organization.members.count
   end
 
   # GET /members/1 or /members/1.json
   def show
-    set_organization
   end
 
   # GET /members/new

@@ -10841,3 +10841,57 @@ section {
 .usr{
   color: white;
 }
+
+
+.simple-calendar .table td.calendar-cell {
+  height: 100px; /* Set a fixed height for all cells */
+  vertical-align: top; /* Align content to the top of the cell */
+  padding: 10px; /* Add padding for spacing */
+}
+
+.simple-calendar .table th {
+  text-align: center; /* Center-align the content of all table header cells */
+}
+
+/* calendar.css */
+.calendar-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+}
+
+.calendar-heading {
+  text-align: center;
+}
+
+.day {
+  position: relative; /* Ensure the container is positioned relatively */
+  display: inline-block; /* Ensure the container does not expand to full width */
+}
+
+.number {
+  position: relative; /* Ensure the number container is positioned relatively */
+  display: inline-block; /* Ensure the number container does not expand to full width */
+}
+
+.dot {
+  content: ''; /* Add a pseudo-element for the outline */
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  width: 140%;
+  height: 130%;
+  border: 3px solid var(--bs-blue); /* Adjust the outline color */
+  border-radius: 50%; /* Ensure the outline matches the dot */
+  transform: translate(-50%, -50%); /* Center the circle */
+  z-index: -1; /* Ensure the outline is behind the number */
+}
+
+.add-new-btn{
+  background-color: #09be82;
+  border-color: #069d6d;
+}
+
+.add-new-btn:hover{
+  background-color: darkgreen;
+}

@@ -5,12 +5,11 @@
   <%= render partial: "shared/org_nav" %>
 
   <h3 class="text-center mt-4">Members</h3>
-
+  <p> Total Members: <%= @total_members %></p>
   <div id="members">
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">#</th>
           <th scope="col">First</th>
           <th scope="col">Last</th>
           <th scope="col">Email</th>
@@ -18,9 +17,8 @@
         </tr>
       </thead>
       <tbody>
-        <% @members.each_with_index do |member, count | %>
+        <% @members.each do |member| %>
           <tr>
-            <th scope="row"> <%= count + 1 %> </th>
             <td> <%= member.first_name %> </td>
             <td> <%= member.last_name %> </td>
             <td> <%= member.email %> </td>
@@ -33,5 +31,8 @@
   </div>
 
   <%= link_to "New member", new_organization_member_path(@organization), class: "btn btn-primary" %>
+
+  <%= paginate @members %>
+
 
 </div>

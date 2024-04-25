@@ -8,18 +8,27 @@
         <h1 class="mb-0">Organizations</h1>
       </div>
       <div class="col-auto">
-        <%= link_to new_organization_path, class: "btn btn-primary pb-2 mb-0", style: "background-color: #09be82; border-color: #09be82;" do %>
+        <%= link_to new_organization_path, class: "add-new-btn btn btn-primary pb-2 mb-0" do %>
           <i class="fa-solid fa-square-plus fa-lg" style="color: #fff;"></i>
         <% end %>
       </div>
     </div>
   </div>
 
-  <div class="row justify-content-center">
-    <% @user_organizations.each do |organization| %>
-      <%= link_to organization.name, organization %>
-      <br>
-    <% end %>
+  <div class="mt-5">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-3"> 
+        <% @user_organizations.each do |organization| %>
+          <div class="list-group pb-2">
+            <%= link_to organization, class: "list-group-item list-group-item-action d-flex justify-content-between align-items-center" do %>
+              <%= organization.name %>
+              <i class="fa-solid fa-circle-arrow-right"></i>
+            <% end %>
+          </div>
+        <% end %>
+        <br>
+      </div>
+    </div>
   </div>
 
 </div>

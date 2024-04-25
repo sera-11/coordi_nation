@@ -1,35 +1,40 @@
-<div class="p-5">
-  <%= form_with(model: [@organization, @meeting_minute]) do |form| %>
-    <% if meeting_minute.errors.any? %>
-      <div style="color: red">
-        <h2><%= pluralize(meeting_minute.errors.count, "error") %> prohibited this meeting_minute from being saved:</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="p-5">
+        <%= form_with(model: [@organization, @meeting_minute]) do |form| %>
+          <% if meeting_minute.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(meeting_minute.errors.count, "error") %> prohibited this meeting_minute from being saved:</h2>
 
-        <ul>
-          <% meeting_minute.errors.each do |error| %>
-            <li><%= error.full_message %></li>
+              <ul>
+                <% meeting_minute.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
           <% end %>
-        </ul>
+
+          <div>
+            <%= form.label :meeting_date, style: "display: block" %>
+            <%= form.date_field :meeting_date, value: Date.today %>
+          </div>
+          <br>
+          <div>
+            <%= form.hidden_field :content, style: "display: block" %>
+            <%= form.rich_text_area :content, style: "width: 100%; height: 300px;" %>
+          </div>
+
+          <div>
+            <%= form.hidden_field :organization_id %>
+          </div>
+          <br>
+          <div>
+            <%= form.button :submit, class: "btn btn-primary" %>
+            <a href="/organizations/<%= @organization.id %>/meeting_minutes" class="btn btn-secondary">Back to meeting minutes</a>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-
-    <div>
-      <%= form.label :meeting_date, style: "display: block" %>
-      <%= form.date_field :meeting_date %>
     </div>
-    <br>
-    <div>
-      <%= form.hidden_field :content, style: "display: block" %>
-      <%= form.rich_text_area :content %>
-    </div>
-
-    <div>
-      <%= form.hidden_field :organization_id %>
-    </div>
-    <br>
-    <div>
-      <%= form.button :submit, class: "btn btn-primary" %>
-      <a href="/organizations/<%= @organization.id %>/meeting_minutes" class="btn btn-secondary">Back to meeting minutes</a>
-    </div>
-
-  <% end %>
+  </div>
 </div>
