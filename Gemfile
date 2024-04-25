@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.2.1"
 
 gem "kaminari"
-gem "will_paginate"
 
 gem "simple_form"
 
