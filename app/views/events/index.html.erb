@@ -3,16 +3,13 @@
 <div class="p-5">
   <%= render partial: "shared/org_nav" %>
 
-  <h3 class="text-center mt-4">Events</h3>
-
-  <%= link_to "New event", new_organization_event_path(@organization), class: "btn btn-primary" %>
-
-  <hr>
-
   <div id="events" class="mt-4"> <!-- Add margin top -->
     <%= month_calendar events: @events do |date, events| %>
-      <div class="day">
-        <%= date.day %>
+      <div class="day <%= 'today' if date == Date.today %>"> <!-- Add 'today' class to highlight today's date -->
+        <div class="number"><%= date.day %></div> <!-- Wrap the number in a container -->
+        <% if date == Date.today %> <!-- Add a conditional to show the red dot only on today's date -->
+          <div class="dot"></div>
+        <% end %>
       </div>
       <div class="event-list"> <!-- Create a container for event list -->
         <% events.each do |event| %>

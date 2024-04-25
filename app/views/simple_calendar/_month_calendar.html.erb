@@ -1,14 +1,22 @@
 <div class="simple-calendar">
-  <div class="calendar-heading">
-   <time datetime="<%= start_date.strftime('%Y-%m') %>" class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></time>
-
-
-    <nav>
+<div class="calendar-heading row justify-content-center align-items-center">
+  <div class="col text-center">
+    <time datetime="<%= start_date.strftime('%Y-%m') %>" class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></time>
+    <nav class="mt-2">
       <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %> |
       <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view %> |
       <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
     </nav>
   </div>
+</div>
+
+<div class="col-auto mb-2">
+    <%= link_to "New event", new_organization_event_path(@organization), class: "btn btn-primary" %>
+  </div>
+
+
+
+
 
   <table class="table table-striped" style="table-layout: fixed; width: 100%;"> <!-- Set a fixed width for the table -->
     <thead>
