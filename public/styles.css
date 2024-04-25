@@ -10895,3 +10895,22 @@ section {
 .add-new-btn:hover{
   background-color: darkgreen;
 }
+
+.form-exit-button{
+  color: #fd7272;
+  background-color: white;
+  border: none;
+  height: 30px;
+  padding-bottom: 2px;
+}
+
+.form-exit-button:hover{
+  color: darkred;
+  background-color: white;
+  border: none;
+}
+
+.form-submit-button{
+  color: #0a58ca;
+  background-color: white;
+} 

@@ -1,7 +1,16 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-lg-8">
-      <div class="p-5">
+
+    <%= link_to "/organizations/#{@organization.id}/meeting_minutes",
+            class: "form-exit-button btn btn-secondary" do %>
+        <i class="fa-solid fa-x"></i>
+      <% end %>
+      
+      <div class="p-2">
+
+      
+
         <%= form_with(model: [@organization, @meeting_minute]) do |form| %>
           <% if meeting_minute.errors.any? %>
             <div style="color: red">
@@ -22,7 +31,7 @@
           <br>
           <div>
             <%= form.hidden_field :content, style: "display: block" %>
-            <%= form.rich_text_area :content, style: "width: 100%;" %>
+            <%= form.rich_text_area :content, style: "width: 100%;  border-radius: 20px;" %>
           </div>
 
           <div>
@@ -30,8 +39,11 @@
           </div>
           <br>
           <div>
-            <%= form.button :submit, class: "btn btn-primary" %>
-            <a href="/organizations/<%= @organization.id %>/meeting_minutes" class="btn btn-secondary">Back to meeting minutes</a>
+
+            <%= form.button :submit, class: "form-submit-button btn btn-primary" do %>
+              <i class="fa-solid fa-check"></i> Submit
+            <% end %>
+
           </div>
         <% end %>
       </div>
