@@ -13,13 +13,13 @@
 
   <div>
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class:"form-control" %>
   </div>
 
   <!-- Hide user_id field and set its value to current user's ID -->
   <%= form.hidden_field :user_id, value: current_user.id %>
 
   <div class="pt-2">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
