@@ -8,9 +8,11 @@
         <h1 class="mb-0">Organizations</h1>
       </div>
       <div class="col-auto">
-        <%= link_to new_organization_path, class: "add-new-btn btn btn-primary pb-2 mb-0" do %>
-          <i class="fa-solid fa-square-plus fa-lg" style="color: #fff;"></i>
-        <% end %>
+        
+
+        <%= render "organizations/modal" %>
+
+        
       </div>
     </div>
   </div>
