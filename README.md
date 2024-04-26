@@ -1,54 +1,42 @@
-# Rails Template
+# CoordiNation
 
-This is a base Ruby on Rails repository configured for learning with Codespaces (and Gitpod).
+CoordiNation is a web application designed to help you organize groups efficiently. Whether you're managing a team at work, coordinating events for a club, or simply trying to keep track of meetings with friends, CoordiNation has you covered.
 
-- Ruby version: `3.2.1`
-- Rails version: `7.0.4.3`
+## Features
 
+- **Meeting Minutes**: Easily create, update, read, and delete meeting minutes using a text editor powered by Trix.
+- **Member Management**: Keep track of members by viewing member details and monitoring member count.
+- **Task Management**: Manage tasks effortlessly with statuses such as "not started," "in progress," and "completed."
+- **Event Tracking**: Stay organized with an integrated calendar for tracking events and important dates.
 
-We've added additional Ruby gems and other software that aren't automatically available in a new Rails app.
+## Usage
 
-### Additional gems:
+To use CoordiNation, simply sign up for an account or log in if you already have one. Once logged in, you'll have access to all the features mentioned above. Here's a quick overview of how to get started:
 
-- [`appdev_support`](https://github.com/firstdraft/appdev_support)
-- [`annotate`](https://github.com/ctran/annotate_models)
-- [`awesome_print`](https://github.com/awesome-print/awesome_print)
-- [`better_errors`](https://github.com/BetterErrors/better_errors)
-- [`binding_of_caller`](https://github.com/banister/binding_of_caller)
-- [`dotenv-rails`](https://github.com/bkeepers/dotenv)
-- [`draft_generators`](https://github.com/firstdraft/draft_generators/)
-- [`draft_matchers`](https://github.com/jelaniwoods/draft_matchers/)
-- [`devise`](https://github.com/heartcombo/devise)
-- [`faker`](https://github.com/faker-ruby/faker)
-- [`grade_runner`](https://github.com/firstdraft/grade_runner/)
-- [`htmlbeautifier`](https://github.com/threedaymonk/htmlbeautifier/)
-- [`http`](https://github.com/httprb/http)
-- [`pry_rails`](https://github.com/pry/pry-rails)
-- [`rails_db`](https://github.com/igorkasyanchuk/rails_db)
-- [`rails-erd`](https://github.com/voormedia/rails-erd)
-- [`rspec-html-matchers`](https://github.com/kucaahbe/rspec-html-matchers)
-- [`rspec-rails`](https://github.com/rspec/rspec-rails)
-- [`rufo`](https://github.com/ruby-formatter/rufo)
-- [`specs_to_readme`](https://github.com/firstdraft/specs_to_readme)
-- [`table_print`](https://github.com/arches/table_print)
-- [`web_git`](https://github.com/firstdraft/web_git)
-- [`webmock`](https://github.com/bblimke/webmock)
+1. **Meeting Minutes**: Click on the "Meeting Minutes" tab to start creating or managing your meeting notes.
+2. **Member Management**: Navigate to the "Members" section to view details about group members and keep track of the member count.
+3. **Task Management**: Head to the "Tasks" page to organize your tasks and track their progress.
+4. **Event Tracking**: Use the calendar feature to keep track of upcoming events and deadlines.
 
-### Additional software:
-- OS Ubuntu 20.04.5 LTS
-- Chromedriver
-- Fly.io's `flyctl`
-- Google Chrome (headless browser)
-- Graphviz
-- Heroku 
-- Node JS 18
-- NPM 8.19.3
-- Parity
-- Postgresql 12
-- Redis
-- Yarn
+## Technologies Used
 
-### VS Code extensions:
-- aliariff.vscode-erb-beautify
-- mbessey.vscode-rufo
-- vortizhe.simple-ruby-erb
+CoordiNation is built using the following technologies:
+
+- Ruby on Rails: Provides the backend framework for handling server-side logic and data storage.
+- Trix Editor: Powers the text editor for creating and editing meeting minutes.
+- Calendar API: Integrates with a calendar API to provide event tracking functionality.
+
+## Installation
+
+To run CoordiNation locally on your machine, follow these steps:
+
+1. Clone this repository to your local machine.
+2. Navigate to the project directory and install dependencies by running `bundle install`.
+3. Set up the database by running `rails db:create` followed by `rails db:migrate`.
+4. Start the Rails server with `rails server`.
+5. Access the application in your web browser by visiting `http://localhost:3000`.
+
+## Contributing
+
+Contributions to CoordiNation are welcome! If you have any suggestions for new features, improvements, or bug fixes, please open an issue or submit a pull request.
+
