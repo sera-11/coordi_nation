@@ -15,16 +15,16 @@
     </div>
   </div>
 
-  <div id="meeting_minutes" class="row justify-content-center">
+  <div id="meeting_minutes">
     <% if @meeting_minutes.present? %>
       <% @meeting_minutes.sort_by { |meeting_minute| meeting_minute.meeting_date }.reverse_each.with_index do |meeting_minute, index| %>
-        <div class="col-md-4 mb-3 d-flex justify-content-center"> <!-- Add justify-content-center class to center the cards -->
-          <div class="card" style="width: 18rem;"> <!-- Specify a fixed width for the cards -->
+        <div class="col mb-3 d-flex justify-content-center"> <!-- Add justify-content-center class to center the cards -->
+          <div class="card" style="width: 20rem;"> <!-- Specify a fixed width for the cards -->
             <div class="card-header text-center">
               <%= link_to meeting_minute.meeting_date.try(:strftime, '%Y %B %d'), organization_meeting_minute_path(@organization, meeting_minute), class: "link-meeting" %>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"><%= meeting_minute.content.to_plain_text.truncate(50) %></li>
+              <li class="list-group-item" style="height: 100px;"><%= meeting_minute.content.to_plain_text.truncate(50) %></li>
             </ul>
             <div class="card-footer d-flex justify-content-between">
   <%= link_to edit_organization_meeting_minute_path(@organization, meeting_minute), class:"btn edit-btn" do %>

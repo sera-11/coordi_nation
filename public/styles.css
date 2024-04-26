@@ -10951,3 +10951,7 @@ section {
 .member-chart .table{
   text-align: left;
 }
+
+.pagination {
+  justify-content: center; /* Center pagination links */
+}
