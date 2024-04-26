@@ -1,10 +1,9 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[ show edit update destroy ]
   before_action :set_organization
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :start, :complete]
 
   # GET /tasks or /tasks.json
   def index
-    @organization = Organization.find(params[:organization_id])
     @tasks = @organization.tasks.order(due_date: :asc)
     @members = @organization.members
   end
@@ -15,38 +14,31 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @organization = Organization.find(params[:organization_id])
     @task = Task.new
-    @members = @organization.members
+    load_organization_data
   end
 
   # GET /tasks/1/edit
   def edit
-    @task = Task.find(params[:id])
-    @organization = @task.organization
-    @members = @organization.members
+    load_organization_data
   end
 
   # POST /tasks or /tasks.json
-def create
-  @organization = Organization.find(params[:organization_id])
-  @task = @organization.tasks.new(task_params) # Build the task associated with the organization
-  @task.status = :not_started
+  def create
+    @task = @organization.tasks.new(task_params)
+    @task.status = :not_started
+    load_organization_data
 
-  # Initialize @members
-  @members = @organization.members
-
-  respond_to do |format|
-    if @task.save
-      format.html { redirect_to organization_tasks_path(@organization), notice: "Task was successfully created." }
-      format.json { render :show, status: :created, location: @task }
-    else
-      format.html { render :new, status: :unprocessable_entity }
-      format.json { render json: @task.errors, status: :unprocessable_entity }
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to organization_tasks_path(@organization), notice: "Task was successfully created." }
+        format.json { render :show, status: :created, location: @task }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
     end
   end
-end
-
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
@@ -64,38 +56,39 @@ end
   # DELETE /tasks/1 or /tasks/1.json
   def destroy
     @task.destroy
-
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: "Task was successfully destroyed." }
+      format.html { redirect_to organization_tasks_path(@organization), notice: "Task was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
+  # PUT /tasks/1/start
   def start
-    @task = Task.find(params[:id])
     @task.update(status: :in_progress)
-    redirect_to organization_tasks_path(@task.organization)
+    redirect_to organization_tasks_path(@organization)
   end
 
+  # PUT /tasks/1/complete
   def complete
-    @task = Task.find(params[:id])
     @task.update(status: :completed)
-    redirect_to organization_tasks_path(@task.organization)
+    redirect_to organization_tasks_path(@organization)
   end
-
 
   private
+
+  # Load organization data for new and edit actions
+  def load_organization_data
+    @members = @organization.members
+  end
 
   def set_organization
     @organization = Organization.find(params[:organization_id])
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_task
     @task = Task.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def task_params
     params.require(:task).permit(:text, :due_date, :assigned_to_id, :organization_id, :status)
   end
