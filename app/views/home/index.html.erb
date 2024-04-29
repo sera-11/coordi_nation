@@ -9,12 +9,12 @@
           <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">Optimize your world, Optimize with ease.</span></h1>
           <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
             <% if user_signed_in? %>
-            <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="/organizations">My Organizations</a>
+              <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="/organizations">My Organizations</a>
             <%else%>
-            <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="/users/sign_up">Sign Up</a>
-            <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="/users/sign_in">Log In</a>
+              <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="/users/sign_up">Sign Up</a>
+              <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="/users/sign_in">Log In</a>
             <%end%>
-                        
+
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@
           <li>Greater accountability with clear visibility into project status and task progress</li>
           <li>Simplified teamwork with an easy-to-use platform that keeps everyone on the same page</li>
         </ul>
-         <strong style="font-size: larger">Get Started Today</strong>
+        <strong style="font-size: larger">Get Started Today</strong>
         <p class="lead">Ready to experience the benefits of CoordiNation for yourself? <a href="/users/sign_up">Sign up</a> now to start coordinating your team more efficiently than ever before!</p>
       </div>
     </div>
@@ -57,19 +57,53 @@
 <section id="services">
   <div class="container px-4">
     <div class="row gx-4 justify-content-center">
-      <div class="col-lg-8">
+      <div class="col-lg-12">
         <h2>Key Features</h2>
-        <ul>
-          <li><strong style="font-size: larger">Efficient Meeting Minutes</strong>: Create detailed meeting minutes effortlessly, facilitating organized documentation of discussions, decisions, and action items.</li>
-          <li><strong style="font-size: larger">Streamlined Member Management</strong>: Seamlessly manage members by adding, removing, or editing their details, ensuring smooth coordination within the application.</li>
-          <li><strong style="font-size: larger">Intuitive Calendar View</strong>: Easily visualize upcoming events through a user-friendly calendar interface, enhancing scheduling and planning capabilities.</li>
-          <li><strong style="font-size: larger">Task Tracking</strong>: Keep track of tasks with clarity, categorizing them into stages such as not started, in progress, and completed, fostering productivity and accountability.</li>
-          <li><strong style="font-size: larger">User-Friendly Interface</strong>: Enjoy a user-centric design that prioritizes simplicity and accessibility, enhancing overall user experience and usability.</li>
-        </ul>
+        <div class="row">
+          <div class="col-lg-6">
+            <ul>
+              <li><strong style="font-size: larger">Efficient Meeting Minutes</strong>: Create detailed meeting minutes effortlessly, facilitating organized documentation of discussions, decisions, and action items.
+                <div class="video-container">
+                  <video width="100%" controls>
+                    <source class="landing-vid" src="/videos/meeting-minutes-feature.mov" type="video/mp4">
+                  </video>
+                </div>
+              </li>
+              <li><strong style="font-size: larger">Streamlined Member Management</strong>: Seamlessly manage members by adding, removing, or editing their details, ensuring smooth coordination within the application.
+                <div class="video-container">
+                  <video width="100%" controls>
+                    <source class="landing-vid" src="/videos/members-feature.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <ul>
+              <li><strong style="font-size: larger">Intuitive Calendar View</strong>: Easily visualize upcoming events through a user-friendly calendar interface, enhancing scheduling and planning capabilities.
+                <div class="video-container">
+                  <video width="100%" controls>
+                    <source class="landing-vid" src="/videos/events-feature.mov" type="video/mp4">
+                  </video>
+                </div>
+              </li>
+              <li><strong style="font-size: larger">Task Tracking</strong>: Keep track of tasks with clarity, categorizing them into stages such as not started, in progress, and completed, fostering productivity and accountability.
+                <div class="video-container">
+                  <video width="100%" controls>
+                    <source class="landing-vid" src="/videos/tasks-feature.mov" type="video/mp4">
+                  </video>
+                </div>
+              </li>
+              <li><strong style="font-size: larger">User-Friendly Interface</strong>: Enjoy a user-centric design that prioritizes simplicity and accessibility, enhancing overall user experience and usability.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+
 <!-- Contact section-->
 <section class="bg-light" id="contact">
   <div class="container px-4">
