@@ -50,6 +50,7 @@ If you'd like to contribute to CoordiNation, please follow these steps:
 git checkout -b feature/your-feature-name
 
 Ensure your branch name is descriptive of the changes you are making.
+
 4. Make your changes locally, adhering to our coding standards and guidelines (outlined below).
 5. Test your changes thoroughly to ensure they work as expected.
 6. Commit your changes with clear and descriptive commit messages:
