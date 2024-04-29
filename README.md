@@ -44,20 +44,20 @@ Thank you for considering contributing to CoordiNation! We welcome contributions
 
 If you'd like to contribute to CoordiNation, please follow these steps:
 
-1. Fork the repository on GitHub.
+1. [Fork the repository on GitHub.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
 2. Clone your fork to your local machine.
 3. Create a new branch for your contribution:
-'git checkout -b feature/your-feature-name'
+`git checkout -b feature/your-feature-name`
 
 Ensure your branch name is descriptive of the changes you are making.
 
 4. Make your changes locally, adhering to our coding standards and guidelines (outlined below).
 5. Test your changes thoroughly to ensure they work as expected.
 6. Commit your changes with clear and descriptive commit messages:
-'git commit -m Brief description of your changes'
+`git commit -m Brief description of your changes`
 
 7. Push your changes to your fork:
-'git push origin feature/your-feature-name'
+`git push origin feature/your-feature-name`
 
 8. Open a pull request (PR) against the `main` branch of the original repository.
 9. Provide a clear description of your changes in the PR, including any relevant context or reasoning.
