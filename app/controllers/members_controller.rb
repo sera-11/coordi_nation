@@ -25,7 +25,7 @@ class MembersController < ApplicationController
   # POST /members or /members.json
   def create
     @member = Member.new(member_params)
-  
+
     respond_to do |format|
       if @member.save
         format.html { redirect_to organization_member_url(@organization, @member), notice: "Member was successfully created." }
@@ -35,7 +35,7 @@ class MembersController < ApplicationController
         format.json { render json: @member.errors, status: :unprocessable_entity }
       end
     end
-  end  
+  end
 
   # PATCH/PUT /members/1 or /members/1.json
   def update
@@ -49,8 +49,8 @@ class MembersController < ApplicationController
       end
     end
   end
-  
-  
+    # Nitpick: Remove extra blank spaces; keep spacing consistent
+
 
   # DELETE /members/1 or /members/1.json
   def destroy
@@ -67,7 +67,7 @@ class MembersController < ApplicationController
   def set_organization
     @organization = Organization.find(params[:organization_id]) if params[:organization_id].present?
   end
-  
+
     # Use callbacks to share common setup or constraints between actions.
     def set_member
       @member = Member.find(params[:id])
