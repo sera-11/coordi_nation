@@ -83,3 +83,20 @@ When submitting a pull request, please ensure the following:
 
 By following these guidelines, you help maintain a clean and efficient development process. Thank you for your contributions!
 
+<hr>
+
+# Code Review
+
+## Documentation
+- Good read me file
+
+## Version Control
+- Good branching and commit messages
+- Missing issue tracking
+
+## Frontend
+- Clean style on desktop
+- Work on improving mobile responsivity
+
+## Backend
+- Missing security and authorization; consider adding pundit

@@ -1,7 +1,7 @@
 class MeetingMinutesController < ApplicationController
   before_action :set_meeting_minute, only: %i[show edit update destroy]
   before_action :set_organization
-
+  # Nitpick: Remove extra blank spaces; keep spacing consistent
 
   # GET /meeting_minutes or /meeting_minutes.json
   def index
@@ -26,7 +26,7 @@ class MeetingMinutesController < ApplicationController
   def create
     @meeting_minute = MeetingMinute.new(meeting_minute_params)
     @organization = Organization.find(params[:organization_id])
-
+  # Nitpick: Remove extra blank spaces; keep spacing consistent
 
     respond_to do |format|
       if @meeting_minute.save
@@ -55,7 +55,7 @@ class MeetingMinutesController < ApplicationController
   # DELETE /meeting_minutes/1 or /meeting_minutes/1.json
   def destroy
     @meeting_minute.destroy
-  
+
     respond_to do |format|
       format.html { redirect_to organization_meeting_minutes_path(@organization), notice: "Meeting minute was successfully destroyed." }
       format.json { head :no_content }
@@ -68,7 +68,7 @@ class MeetingMinutesController < ApplicationController
   def set_organization
     @organization = Organization.find(params[:organization_id])
   end
-  
+
   def set_meeting_minute
     @meeting_minute = MeetingMinute.find(params[:id])
   end

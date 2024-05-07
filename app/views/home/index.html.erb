@@ -9,6 +9,7 @@
           <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">Optimize your world, Optimize with ease.</span></h1>
           <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
             <% if user_signed_in? %>
+            <%# Good place to use the link_to rails helper %>
               <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="/organizations">My Organizations</a>
             <%else%>
               <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="/users/sign_up">Sign Up</a>
@@ -22,6 +23,7 @@
         <!-- Header profile picture-->
         <div class="d-flex justify-content-center mt-5 mt-xxl-0">
           <div class="profile bg-gradient-primary-to-secondary">
+            <%# Teeny tiny nitpick: Use more descriptive image file names%>
             <img class="logo mt-5" src="images/Coordi.png">
           </div>
         </div>
@@ -37,6 +39,7 @@
       <div class="col-lg-8">
         <h2>About</h2>
         <p class="lead">Welcome to CoordiNation – your all-in-one solution for efficient organization and seamless collaboration </p>
+        <%# Add custom classes and move your inline styles to a stylesheet%>
         <strong style="font-size: larger">Our Mission</strong>
         <p>At CoordiNation, we're dedicated to simplifying the way teams coordinate and collaborate. Our mission is to empower individuals and organizations to streamline their workflows, enhance productivity, and achieve their goals with ease.</p>
         <strong style="font-size: larger">User Benefits</strong>
